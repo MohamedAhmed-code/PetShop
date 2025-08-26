@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Store - Best Food For Your Pet</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+ <header class="header page-header">
+        <div class="container">
+            <div class="logo">
+                <h2>Pet<span>Store</span></h2>
+            </div>
+
+            <!-- زرار المينيو -->
+            <div class="menu-icon" id="menuIcon" onclick="myFunction()">☰</div>
+
+            <!-- القائمة -->
+            <nav class="nav topnav" id="myTopnav">
+                <a href="#home" class="active">Home</a>
+                <a href="#category">Category</a>
+                <a href="#about">About US</a>
+                <a href="#shop">Shop</a>
+                <a href="cart.html" class="cart-link">
+                    <img src="imgs/cart-icon.png" alt="">
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1><span class="best-food"><span class="best">BEST</span> <span class="food">FOOD</span></span><br><span class="for-pet">FOR YOUR <span class="best">PET</span></span></h1>
+                    <p>Everything that your pet were wants and best quality and best price</p>
+                    <button class="btn-primary" style="color: #741a66;" onclick="scrollToSection('shop')">Shop now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Section -->
+    <section class="category" id="category">
+        <div class="container">
+            <div class="paw-icon"><img src="imgs/Pet(1).png" alt=""></div>
+            <h2>Category</h2>
+            <div class="category-grid">
+                <div class="category-item" onclick="filterProducts('dogs')">
+                    <div class="category-icon">
+                        <img style="border-radius: 50%;" src="imgs/Pet(7).png" alt="Dog">
+                    </div>
+                    <span>DOGS</span>
+                </div>
+                <div class="category-item" onclick="filterProducts('cats')">
+                    <div class="category-icon">
+                        <img src="imgs/1.webp" alt="Cat">
+                    </div>
+                    <span>CATS</span>
+                </div>
+                <div class="category-item" onclick="filterProducts('birds')">
+                    <div class="category-icon">
+                        <img src="imgs/3.webp" alt="Bird">
+                    </div>
+                    <span>BIRDS</span>
+                </div>
+                <div class="category-item" onclick="filterProducts('fish')">
+                    <div class="category-icon">
+                        <img src="imgs/2.webp" alt="Fish">
+                    </div>
+                    <span>FISH</span>
+                </div>
+                <div class="category-item" onclick="filterProducts('rabbits')">
+                    <div class="category-icon">
+                        <img src="imgs/5.webp" alt="Rabbit">
+                    </div>
+                    <span>RABBITS</span>
+                </div>
+            </div>
+        </div>
+        <video onclick="scrollToSection('shop')" style="cursor: pointer;  margin-top: 80px;" autoplay loop muted playsinline width="100" height="100"><source src="imgs/Pet.mp4" type="video/mp4"></video>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="about-badge">
+                        <img src="imgs/Pet(2).png" alt="">
+                    </div>
+                    <div class="paw-icon">
+                        <img class="paw-rot" src="imgs/Pet(1).png" alt="">
+                    </div>
+                    <div class="text-about">
+                        <h2><span class="orange">ABOUT US</span><br>Pet Store</h2>
+                        <p>Give your furry friend they're looking for by choosing the right food for your pet. This way, they'll immediately see your brand offering and they can one-click-listen.</p>
+                        <button class="btn-primary1" onclick="scrollToSection('shop')">Shop Now</button>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="about-text-overlay">THE ROAD TO HAPPINESS YOUR PET</div>
+                </div>
+                <img src="imgs/offer-banner-2.png" class="img-cat" alt="White cat with toy">
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section - التصميم الجديد -->
+    <section class="products" id="shop">
+        <div class="container">
+            <div class="paw-icon"><img class="paw-rot" src="imgs/Pet(1).png" alt=""></div>
+            <h2><span class="purple">OUR PRODUCT</span><br><span class="orange">THE SHOP</span></h2>
+            
+            <div class="new-product-filters" id="newProductFilters">
+                <button class="new-filter-btn active" data-filter="all">ALL</button>
+                <button class="new-filter-btn" data-filter="cats">CATS</button>
+                <button class="new-filter-btn" data-filter="dogs">DOGS</button>
+                <button class="new-filter-btn" data-filter="birds">BIRDS</button>
+                <button class="new-filter-btn" data-filter="fish">FISH</button>
+                <button class="new-filter-btn" data-filter="rabbits">RABBITS</button>
+            </div>
+
+            <div class="new-products-grid" id="newProductsGrid">
+                <!-- سيتم تحميل المنتجات بواسطة JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Promo Banners -->
+    <section class="promo-banners">
+        <div class="container">
+            <div class="banners-grid">
+                <div class="banner banner-cat">
+                    <div class="banner-content bannercat">
+                        <h3><span>50%</span><br>ON CAT FOODS</h3>
+                        <button class="btn-secondary1" onclick="scrollToSection('shop')">SHOP NOW</button>
+                    </div>
+                </div>
+                <div class="banner banner-dog">
+                    <div class="banner-content">
+                        <h3><span>50%</span><br>ON DOG FOODS</h3>
+                        <button class="btn-secondary1" onclick="scrollToSection('shop')">SHOP NOW</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Pet<span>Store</span></h3>
+                    <div class="footer-info">
+                        <p><strong>MOHAMED AHMED</strong></p>
+                        <p>WEBSITE DESIGNER</p>
+                        <p>📞 <a href=""> +20 1271120594 </a></p>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Our Sections</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#category">Our Category</a></li>
+                        <li><a href="#about">About US</a></li>
+                        <li><a href="#shop">Our Shop</a></li>
+                        <li><a href="cart.html">Shopping Cart</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+    <script src="script.js"></script>
+</body>
+</html>
