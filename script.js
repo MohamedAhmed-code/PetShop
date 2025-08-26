@@ -482,7 +482,7 @@ function handleCheckout(event) {
   message += `Thank you for your order! 🐾`;
 
   // Replace with your WhatsApp number
-  const phoneNumber = "201271234564";
+  const phoneNumber = "201271120594";
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
   // Open WhatsApp
