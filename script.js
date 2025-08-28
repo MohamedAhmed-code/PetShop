@@ -253,13 +253,6 @@ function loadProducts(category = "all") {
 }
 
 // Filter products
-function filterProducts(category) {
-  // Update active filter button
-  document.querySelectorAll(".filter-btn").forEach((btn) => btn.classList.remove("active"))
-  event.target.classList.add("active")
-
-  loadProducts(category)
-}
 
 // View product details
 function viewProduct(productId) {
