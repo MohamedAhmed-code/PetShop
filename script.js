@@ -119,13 +119,11 @@ function addToCart(productId, quantity = 1) {
 
 // Show notification
 function showNotification(message, type = "success") {
-  // Remove any existing notifications first
   const existingNotifications = document.querySelectorAll('.notification');
   existingNotifications.forEach(notification => {
     notification.remove();
   });
   
-  // Create notification element
   const notification = document.createElement("div");
   notification.className = "notification";
   notification.innerHTML = `
@@ -135,7 +133,6 @@ function showNotification(message, type = "success") {
     </div>
   `;
   
-  // Add styles
   notification.style.cssText = `
     position: fixed;
     top: 100px;
@@ -156,10 +153,8 @@ function showNotification(message, type = "success") {
     gap: 10px;
   `;
   
-  // Add to document
   document.body.appendChild(notification);
   
-  // Remove after 3 seconds
   setTimeout(() => {
     notification.style.animation = "slideOutRight 0.3s ease-in";
     setTimeout(() => {
@@ -252,8 +247,6 @@ function loadProducts(category = "all") {
     .join("")
 }
 
-// Filter products
-
 // View product details
 function viewProduct(productId) {
   window.location.href = `product.html?id=${productId}`
@@ -289,7 +282,6 @@ function loadProductDetails() {
         </div>
     `
 
-  // Load other products
   const otherProducts = products.filter((p) => p.id !== productId).slice(0, 4)
   const otherProductsGrid = document.getElementById("otherProductsGrid")
   if (otherProductsGrid) {
@@ -397,7 +389,6 @@ function updateCartSummary() {
   if (totalEl) totalEl.textContent = `$${total.toFixed(2)}`;
   if (itemsCountEl) itemsCountEl.textContent = itemsCount;
 
-  // تحديث صفحة الـ checkout
   const checkoutSubtotal = document.getElementById("checkoutSubtotal");
   const checkoutShipping = document.getElementById("checkoutShipping");
   const checkoutTotal = document.getElementById("checkoutTotal");
@@ -450,12 +441,10 @@ function handleCheckout(event) {
     notes: formData.get("notes") || "No additional notes",
   };
 
-  // Calculate totals
   const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
   const shipping = 10;
   const total = subtotal + shipping;
 
-  // Create WhatsApp message
   let message = `🛒 *New Order from Pet Store*\n\n`;
   message += `👤 *Customer Information:*\n`;
   message += `Name: ${customerInfo.fullName}\n`;
@@ -474,14 +463,11 @@ function handleCheckout(event) {
   message += `*Total: $${total.toFixed(2)}*\n\n`;
   message += `Thank you for your order! 🐾`;
 
-  // Replace with your WhatsApp number
   const phoneNumber = "201271120594";
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
-  // Open WhatsApp
   window.open(whatsappUrl, "_blank");
 
-  // Clear cart
   cart = [];
   localStorage.setItem("cart", JSON.stringify(cart));
   updateCartCount();
@@ -503,7 +489,6 @@ function buyNow(productId) {
   const product = products.find(p => p.id === productId);
   if (!product) return;
   
-  // Clear cart and add only this product
   cart = [{
     id: product.id,
     name: product.name,
@@ -516,7 +501,6 @@ function buyNow(productId) {
   localStorage.setItem("cart", JSON.stringify(cart));
   updateCartCount();
   
-  // Redirect to checkout
   window.location.href = "checkout.html";
 }
 
@@ -529,7 +513,6 @@ function loadNewProducts(category = "all") {
 
   productsGrid.innerHTML = filteredProducts
     .map((product) => {
-      // إنشاء تقييم النجوم
       let starsHtml = '';
       for (let i = 1; i <= 5; i++) {
         if (i <= product.rating) {
@@ -539,7 +522,6 @@ function loadNewProducts(category = "all") {
         }
       }
 
-      // الحصول على اسم الفئة بالعربية
       const categoryNames = {
         'dogs': 'dogs',
         'cats': 'cats',
@@ -577,7 +559,6 @@ function loadNewProducts(category = "all") {
 
 // تصفية المنتجات
 function filterProducts(category) {
-  // تحديث أزرار التصفية النشطة
   document.querySelectorAll('.new-filter-btn').forEach(btn => {
     btn.classList.remove('active');
     if (btn.dataset.filter === category) {
@@ -590,16 +571,13 @@ function filterProducts(category) {
 
 // Initialize page
 document.addEventListener("DOMContentLoaded", () => {
-  // تحديث عداد عربة التسوق عند تحميل أي صفحة
   updateCartCount();
 
-  // Check which page we're on and load appropriate content
   const path = window.location.pathname;
 
   if (path.includes("index.html") || path === "/") {
     loadNewProducts();
     
-    // إضافة event listeners لأزرار التصفية
     document.querySelectorAll('.new-filter-btn').forEach(btn => {
       btn.addEventListener('click', function() {
         filterProducts(this.dataset.filter);
@@ -612,7 +590,6 @@ document.addEventListener("DOMContentLoaded", () => {
   } else if (path.includes("checkout.html")) {
     loadCheckoutItems();
 
-    // Add checkout form event listener
     const checkoutForm = document.getElementById("checkoutForm");
     if (checkoutForm) {
       checkoutForm.addEventListener("submit", handleCheckout);
