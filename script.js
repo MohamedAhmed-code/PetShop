@@ -390,27 +390,27 @@ function loadCartItems() {
 // Update cart summary with tax calculation
 function updateCartSummary() {
   const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-  const tax = subtotal * 0.1; // 10% tax
-  const total = subtotal + tax;
+  const shipping = 10; 
+  const total = subtotal + shipping;
   const itemsCount = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   const subtotalEl = document.getElementById("subtotal");
-  const taxEl = document.getElementById("tax");
+  const shippingEl = document.getElementById("shipping");
   const totalEl = document.getElementById("total");
   const itemsCountEl = document.getElementById("itemsCount");
 
   if (subtotalEl) subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
-  if (taxEl) taxEl.textContent = `$${tax.toFixed(2)}`;
+  if (shippingEl) shippingEl.textContent = `$${shipping.toFixed(2)}`;
   if (totalEl) totalEl.textContent = `$${total.toFixed(2)}`;
   if (itemsCountEl) itemsCountEl.textContent = itemsCount;
 
-  // Update checkout page summary
+  // تحديث صفحة الـ checkout
   const checkoutSubtotal = document.getElementById("checkoutSubtotal");
-  const checkoutTax = document.getElementById("checkoutTax");
+  const checkoutShipping = document.getElementById("checkoutShipping");
   const checkoutTotal = document.getElementById("checkoutTotal");
 
   if (checkoutSubtotal) checkoutSubtotal.textContent = `$${subtotal.toFixed(2)}`;
-  if (checkoutTax) checkoutTax.textContent = `$${tax.toFixed(2)}`;
+  if (checkoutShipping) checkoutShipping.textContent = `$${shipping.toFixed(2)}`;
   if (checkoutTotal) checkoutTotal.textContent = `$${total.toFixed(2)}`;
 }
 
@@ -459,7 +459,7 @@ function handleCheckout(event) {
 
   // Calculate totals
   const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-  const shipping = 5;
+  const shipping = 10;
   const total = subtotal + shipping;
 
   // Create WhatsApp message
@@ -664,7 +664,7 @@ const products = [
     category: "dogs",
     price: 29.99,
     oldPrice: 39.99,
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/premium-dog-food-bag-5BAYF4ZgdoAkuag1ZCzIFi1fqB5AAB.png",
+    image: "imgs/pet12.png",
     rating: 5,
     description: "High-quality dog food with premium ingredients for optimal nutrition and health."
   },
@@ -674,7 +674,7 @@ const products = [
     category: "cats",
     price: 24.99,
     oldPrice: 34.99,
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/dog-treats-bag-OoikFvMFd5YZQrCku8IJHzh533Ac1l.png",
+    image: "imgs/pet9.png",
     rating: 4,
     description: "Nutritious cat food formula designed for adult cats with sensitive stomachs."
   },
@@ -684,7 +684,7 @@ const products = [
     category: "birds",
     price: 19.99,
     oldPrice: 29.99,
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/bird-seed-mix-4HC3Tbjbye1AAIx9qDj0FOlx6duDiE.png",
+    image: "imgs/pet10.png",
     rating: 5,
     description: "Nutritious bird seed mix with sunflower seeds, millet, and essential vitamins."
   },
@@ -694,7 +694,7 @@ const products = [
     category: "fish",
     price: 14.99,
     oldPrice: 19.99,
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/fish-flakes-container-rL6dL76NjorduGyeFNxGU7J8p69Vac.png",
+    image: "imgs/pet11.png",
     rating: 4,
     description: "High-quality fish flakes with color enhancers and immune system support."
   },
@@ -704,7 +704,7 @@ const products = [
     category: "rabbits",
     price: 22.99,
     oldPrice: 32.99,
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/premium-dog-food-bag-5BAYF4ZgdoAkuag1ZCzIFi1fqB5AAB.png",
+    image: "imgs/pet12.png",
     rating: 5,
     description: "Premium rabbit pellets with timothy hay and essential nutrients for digestive health."
   },
@@ -714,7 +714,7 @@ const products = [
     category: "dogs",
     price: 16.99,
     oldPrice: 21.99,
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/dog-treats-bag-OoikFvMFd5YZQrCku8IJHzh533Ac1l.png",
+    image: "imgs/pet9.png",
     rating: 4,
     description: "Delicious and healthy treats for your furry friend, made with natural ingredients."
   },
@@ -724,7 +724,7 @@ const products = [
     category: "cats",
     price: 12.99,
     oldPrice: 17.99,
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/bird-seed-mix-4HC3Tbjbye1AAIx9qDj0FOlx6duDiE.png",
+    image: "imgs/pet10.png",
     rating: 5,
     description: "Irresistible treats for your feline companion, with added vitamins and minerals."
   },
@@ -734,8 +734,38 @@ const products = [
     category: "birds",
     price: 18.99,
     oldPrice: 23.99,
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/fish-flakes-container-rL6dL76NjorduGyeFNxGU7J8p69Vac.png",
+    image: "imgs/pet11.png",
     rating: 4,
     description: "Essential vitamin supplement for birds to support overall health and feather quality."
+  },
+  {
+    id: 9,
+    name: "Premium Cat Food",
+    category: "cats",
+    price: 29.99,
+    oldPrice: 39.99,
+    image: "imgs/pet12.png",
+    rating: 5,
+    description: "Nutritious cat food formula designed for adult cats with sensitive stomachs."
+  },
+  {
+    id: 10,
+    name: "Fish Flakes",
+    category: "fish",
+    price: 14.99,
+    oldPrice: 19.99,
+    image: "imgs/pet11.png",
+    rating: 4,
+    description: "High-quality fish flakes with color enhancers and immune system support."
+  },
+  {
+    id: 11,
+    name: "Rabbit Pellets",
+    category: "rabbits",
+    price: 22.99,
+    oldPrice: 32.99,
+    image: "imgs/pet9.png",
+    rating: 5,
+    description: "Premium rabbit pellets with timothy hay and essential nutrients for digestive health."
   }
 ];
