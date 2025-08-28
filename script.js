@@ -578,11 +578,12 @@ document.addEventListener("DOMContentLoaded", () => {
   if (path.includes("index.html") || path === "/") {
     loadNewProducts();
     
-    document.querySelectorAll('.new-filter-btn').forEach(btn => {
-      btn.addEventListener('click', function() {
-        filterProducts(this.dataset.filter);
-      });
+  loadNewProducts();
+  document.querySelectorAll('.new-filter-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      filterProducts(this.dataset.filter);
     });
+  });
   } else if (path.includes("product.html")) {
     loadProductDetails();
   } else if (path.includes("cart.html")) {
