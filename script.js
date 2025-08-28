@@ -18,10 +18,29 @@ function myFunction() {
 document.querySelectorAll('.nav a').forEach(link => {
   link.addEventListener('click', () => {
     var nav = document.getElementById("myTopnav");
+    var icon = document.getElementById("menuIcon");
     if(nav.classList.contains("responsive")) {
       nav.classList.remove("responsive");
+      icon.innerHTML = "☰";
+      icon.classList.remove("open");
     }
   });
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', (event) => {
+  var nav = document.getElementById("myTopnav");
+  var icon = document.getElementById("menuIcon");
+
+  // لو المنيو مفتوحة
+  if (nav.classList.contains("responsive")) {
+    // لو الضغط مش على المنيو ولا على زرار الايكونة
+    if (!nav.contains(event.target) && event.target !== icon) {
+      nav.classList.remove("responsive");
+      icon.innerHTML = "☰";
+      icon.classList.remove("open");
+    }
+  }
 });
 
 // Sticky Header
@@ -302,7 +321,7 @@ function loadCartItems() {
       const categoryName = categoryNames[item.category] || item.category.toUpperCase();
       
       return `
-        <div class="cart-item-card">
+        <div class="cart-item-card" >
           <img src="${item.image}" alt="${item.name}" class="cart-item-image">
           <div class="cart-item-details">
             <h3 class="cart-item-name">${item.name}</h3>
@@ -396,11 +415,20 @@ function loadCheckoutItems() {
 function handleCheckout(event) {
   event.preventDefault();
 
+  // التحقق من اختيار المحافظة
+  const citySelect = document.getElementById("city");
+  if (!citySelect.value) {
+    alert("يرجى اختيار المحافظة قبل إكمال الطلب");
+    citySelect.focus();
+    return;
+  }
+
   const formData = new FormData(event.target);
   const customerInfo = {
     fullName: formData.get("fullName"),
     phone: formData.get("phone"),
     address: formData.get("address"),
+    city: formData.get("city"),
     notes: formData.get("notes") || "No additional notes",
   };
 
@@ -408,23 +436,54 @@ function handleCheckout(event) {
   const shipping = 10;
   const total = subtotal + shipping;
 
-  let message = `🛒 *New Order from Pet Store*\n\n`;
-  message += `👤 *Customer Information:*\n`;
-  message += `Name: ${customerInfo.fullName}\n`;
-  message += `Phone: ${customerInfo.phone}\n`;
-  message += `Address: ${customerInfo.address}\n`;
-  message += `Notes: ${customerInfo.notes}\n\n`;
+  // خريطة أسماء المحافظات العربية
+  const governorates = {
+    "cairo": "القاهرة",
+    "giza": "الجيزة",
+    "alexandria": "الإسكندرية",
+    "sharqia": "الشرقية",
+    "gharbia": "الغربية",
+    "dakahlia": "الدقهلية",
+    "qalyubia": "القليوبية",
+    "monufia": "المنوفية",
+    "kafr_elsheikh": "كفر الشيخ",
+    "fayoum": "الفيوم",
+    "beni_suef": "بني سويف",
+    "minya": "المنيا",
+    "assiut": "أسيوط",
+    "sohag": "سوهاج",
+    "qena": "قنا",
+    "luxor": "الأقصر",
+    "aswan": "أسوان",
+    "ismailia": "الإسماعيلية",
+    "suez": "السويس",
+    "port_said": "بورسعيد",
+    "damietta": "دمياط",
+    "matruh": "مطروح",
+    "red_sea": "البحر الأحمر",
+    "new_valley": "الوادي الجديد",
+    "north_sinai": "شمال سيناء",
+    "south_sinai": "جنوب سيناء"
+  };
 
-  message += `📦 *Order Details:*\n`;
+  let message = `🛒 *طلب جديد من متجر الحيوانات الأليفة*\n\n`;
+  message += `👤 *معلومات العميل:*\n`;
+  message += `الاسم: ${customerInfo.fullName}\n`;
+  message += `الهاتف: ${customerInfo.phone}\n`;
+  message += `المحافظة: ${governorates[customerInfo.city] || customerInfo.city}\n`;
+  message += `العنوان: ${customerInfo.address}\n`;
+  message += `ملاحظات: ${customerInfo.notes}\n\n`;
+
+  message += `📦 *تفاصيل الطلب:*\n`;
   cart.forEach((item) => {
     message += `• ${item.name} x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}\n`;
   });
 
-  message += `\n💰 *Order Summary:*\n`;
-  message += `Subtotal: $${subtotal.toFixed(2)}\n`;
-  message += `Shipping: $${shipping.toFixed(2)}\n`;
-  message += `*Total: $${total.toFixed(2)}*\n\n`;
-  message += `Thank you for your order! 🐾`;
+  message += `\n💰 *ملخص الطلب:*\n`;
+  message += `المجموع: $${subtotal.toFixed(2)}\n`;
+  message += `الشحن: $${shipping.toFixed(2)}\n`;
+  message += `*الإجمالي: $${total.toFixed(2)}*\n\n`;
+  message += `شكراً لطلبك! 🐾`;
 
   const phoneNumber = "201271120594";
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
@@ -435,7 +494,7 @@ function handleCheckout(event) {
   localStorage.setItem("cart", JSON.stringify(cart));
   updateCartCount();
 
-  alert("Order sent via WhatsApp! Thank you for your purchase.");
+  alert("تم إرسال الطلب عبر الواتساب! شكراً لشرائك.");
   window.location.href = "index.html";
 }
 
@@ -481,7 +540,7 @@ function loadNewProducts(category = "all") {
       const categoryName = categoryNames[product.category] || product.category;
 
       return `
-        <div class="new-product-card" data-category="${product.category}">
+        <div class="new-product-card" data-category="${product.category}" data-aos="zoom-in-up">
           <div class="new-product-image">
             <img src="${product.image}" alt="${product.name}">
             <span class="new-category-badge">${categoryName}</span>
@@ -589,8 +648,8 @@ function scrollToSection(sectionId) {
 
 // Products data without duplicates
 const products = [
-  {
-    id: 1,
+{
+id: 1,
     name: "Premium Dog Food",
     category: "dogs",
     price: 29.99,
@@ -668,5 +727,35 @@ const products = [
     image: "imgs/pet11.png",
     rating: 4,
     description: "Essential vitamin supplement for birds to support overall health and feather quality."
+  },
+  {
+    id: 9,
+    name: "Premium Cat Food",
+    category: "cats",
+    price: 29.99,
+    oldPrice: 39.99,
+    image: "imgs/pet12.png",
+    rating: 5,
+    description: "Nutritious cat food formula designed for adult cats with sensitive stomachs."
+  },
+  {
+    id: 10,
+    name: "Fish Flakes",
+    category: "fish",
+    price: 14.99,
+    oldPrice: 19.99,
+    image: "imgs/pet11.png",
+    rating: 4,
+    description: "High-quality fish flakes with color enhancers and immune system support."
+  },
+  {
+    id: 11,
+    name: "Rabbit Pellets",
+    category: "rabbits",
+    price: 22.99,
+    oldPrice: 32.99,
+    image: "imgs/pet9.png",
+    rating: 5,
+    description: "Premium rabbit pellets with timothy hay and essential nutrients for digestive health."
   }
 ];

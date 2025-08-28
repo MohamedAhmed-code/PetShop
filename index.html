@@ -6,19 +6,20 @@
     <title>Pet Store - Best Food For Your Pet</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="aos-master/dist/aos.css">
 </head>
 <body>
  <header class="header page-header">
         <div class="container">
-            <div class="logo">
+            <div class="logo" data-aos="fade-right">
                 <h2>Pet<span>Store</span></h2>
             </div>
 
             <!-- زرار المينيو -->
-            <div class="menu-icon" id="menuIcon" onclick="myFunction()">☰</div>
+            <div class="menu-icon" id="menuIcon" onclick="myFunction()" data-aos="fade-left">☰</div>
 
             <!-- القائمة -->
-            <nav class="nav topnav" id="myTopnav">
+            <nav class="nav topnav" id="myTopnav" data-aos="zoom-in">
                 <a href="#home" class="active">Home</a>
                 <a href="#category">Category</a>
                 <a href="#about">About US</a>
@@ -33,11 +34,11 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="container">
+        <div class="container"  data-aos="zoom-in-right">
             <div class="hero-content">
                 <div class="hero-text">
                     <h1><span class="best-food"><span class="best">BEST</span> <span class="food">FOOD</span></span><br><span class="for-pet">FOR YOUR <span class="best">PET</span></span></h1>
-                    <p>Everything that your pet were wants and best quality and best price</p>
+                    <p>Everything that your pet were wants with best quality and best price</p>
                     <button class="btn-primary" style="color: #741a66;" onclick="scrollToSection('shop')" > Shop now</a></button>
                 </div>
             </div>
@@ -47,34 +48,34 @@
     <!-- Category Section -->
     <section class="category" id="category">
         <div class="container">
-            <div class="paw-icon"><img src="imgs/Pet(1).png" alt=""></div>
-            <h2>Category</h2>
+            <div class="paw-icon" data-aos="fade-up" data-aos-anchor-placement="top-bottom"><img src="imgs/Pet(1).png" alt=""></div>
+            <h2 data-aos="fade-up" data-aos-anchor-placement="top-bottom">Category</h2>
             <div class="category-grid">
-                <div class="category-item" onclick="filterProducts('dogs')">
+                <div class="category-item" onclick="filterProducts('dogs')" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
                     <div class="category-icon" onclick="scrollToSection('shop')">
                         <img style="border-radius: 50%;" src="imgs/Pet(7).png" alt="Dog">
                     </div>
                     <span>DOGS</span>
                 </div>
-                <div class="category-item" onclick="filterProducts('cats')">
+                <div class="category-item" onclick="filterProducts('cats')" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
                     <div class="category-icon" onclick="scrollToSection('shop')">
                         <img src="imgs/1.webp" alt="Cat">
                     </div>
                     <span>CATS</span>
                 </div>
-                <div class="category-item" onclick="filterProducts('birds')">
+                <div class="category-item" onclick="filterProducts('birds')" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
                     <div class="category-icon" onclick="scrollToSection('shop')">
                         <img src="imgs/3.webp" alt="Bird">
                     </div>
                     <span>BIRDS</span>
                 </div>
-                <div class="category-item" onclick="filterProducts('fish')">
+                <div class="category-item" onclick="filterProducts('fish')" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
                     <div class="category-icon" onclick="scrollToSection('shop')">
                         <img src="imgs/2.webp" alt="Fish">
                     </div>
                     <span>FISH</span>
                 </div>
-                <div class="category-item" onclick="filterProducts('rabbits')">
+                <div class="category-item" onclick="filterProducts('rabbits')" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
                     <div class="category-icon" onclick="scrollToSection('shop')">
                         <img src="imgs/5.webp" alt="Rabbit">
                     </div>
@@ -82,7 +83,7 @@
                 </div>
             </div>
         </div>
-        <video onclick="scrollToSection('shop')" style="cursor: pointer;  margin-top: 80px;" autoplay loop muted playsinline width="100" height="100"><source src="imgs/Pet.mp4" type="video/mp4"></video>
+        <video data-aos="fade-up" data-aos-anchor-placement="top-bottom" onclick="scrollToSection('shop')" style="cursor: pointer;  margin-top: 80px;" autoplay loop muted playsinline width="100" height="100"><source src="imgs/Pet.mp4" type="video/mp4"></video>
     </section>
 
     <!-- About Section -->
@@ -91,21 +92,20 @@
             <div class="about-content">
                 <div class="about-text">
                     <div class="about-badge">
-                        <img src="imgs/Pet(2).png" alt="">
+                        <img src="imgs/Pet(2).png" alt="" data-aos="zoom-in-right">
                     </div>
-                    <div class="paw-icon">
+                    <div class="paw-icon" data-aos="zoom-in-right">
                         <img class="paw-rot" src="imgs/Pet(1).png" alt="">
                     </div>
                     <div class="text-about">
-                        <h2><span class="orange">ABOUT US</span><br>Pet Store</h2>
-                        <p>Give your furry friend they're looking for by choosing the right food for your pet. This way, they'll immediately see your brand offering and they can one-click-listen.</p>
-                        <button class="btn-primary1" onclick="scrollToSection('shop')">Shop Now</button>
+                        <h2 data-aos="zoom-in-right"><span class="orange">ABOUT US</span><br>Pet Store</h2>
+                        <p data-aos="fade-right">Give your furry friend they're looking for by choosing the right food for your pet. This way, they'll immediately see your brand offering and they can one-click-listen.</p>
+                        <button data-aos="zoom-in-up" class="btn-primary1" onclick="scrollToSection('shop')">Shop Now</button>
                     </div>
                 </div>
                 <div class="about-image">
-                    <div class="about-text-overlay">THE ROAD TO HAPPINESS YOUR PET</div>
+                    <img data-aos="zoom-in" src="imgs/pet_care.png" class="img-cat" alt="White cat with toy">
                 </div>
-                <img src="imgs/offer-banner-2.png" class="img-cat" alt="White cat with toy">
             </div>
         </div>
     </section>
@@ -113,10 +113,10 @@
     <!-- Products Section - التصميم الجديد -->
     <section class="products" id="shop">
         <div class="container">
-            <div class="paw-icon"><img class="paw-rot" src="imgs/Pet(1).png" alt=""></div>
-            <h2><span class="purple">OUR PRODUCT</span><br><span class="orange">THE SHOP</span></h2>
+            <div class="paw-icon" data-aos="zoom-in-right"><img class="paw-rot" src="imgs/Pet(1).png" alt=""></div>
+            <h2><span class="purple" data-aos="zoom-in-right">OUR PRODUCT</span><br><span class="orange">THE SHOP</span></h2>
             
-            <div class="new-product-filters" id="newProductFilters">
+            <div class="new-product-filters" id="newProductFilters" data-aos="zoom-in-right">
                 <button class="new-filter-btn active" data-filter="all">ALL</button>
                 <button class="new-filter-btn" data-filter="cats">CATS</button>
                 <button class="new-filter-btn" data-filter="dogs">DOGS</button>
@@ -135,13 +135,13 @@
     <section class="promo-banners">
         <div class="container">
             <div class="banners-grid">
-                <div class="banner banner-cat">
+                <div class="banner banner-cat" data-aos="fade-right">
                     <div class="banner-content bannercat">
                         <h3><span>50%</span><br>ON CAT FOODS</h3>
                         <button class="btn-secondary1" onclick="scrollToSection('shop')">SHOP NOW</button>
                     </div>
                 </div>
-                <div class="banner banner-dog">
+                <div class="banner banner-dog" data-aos="fade-right">
                     <div class="banner-content">
                         <h3><span>50%</span><br>ON DOG FOODS</h3>
                         <button class="btn-secondary1" onclick="scrollToSection('shop')">SHOP NOW</button>
@@ -154,14 +154,14 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
+            <div class="footer-content" >
                 <div class="footer-brand">
-                    <h3>Pet<span>Store</span></h3>
+                    <h3 data-aos="zoom-in-right">Pet<span>Store</span></h3>
                     <div class="footer-info">
-                        <p><strong>MOHAMED AHMED</strong></p>
-                        <p>WEBSITE DESIGNER</p>
-                        <p>📞 <a href=""> +20 1271120594 </a></p>
-                        <div class="social-icons">
+                        <p data-aos="zoom-in-right"><strong>MOHAMED AHMED</strong></p>
+                        <p data-aos="zoom-in-right">WEBSITE DESIGNER</p>
+                        <p data-aos="zoom-in-right">📞 <a href=""> +20 1271120594 </a></p>
+                        <div class="social-icons" data-aos="zoom-in-right">
                             <a href="#"><i class="fab fa-instagram"></i></a>
                             <a href="#"><i class="fab fa-facebook"></i></a>
                             <a href="#"><i class="fab fa-twitter"></i></a>
@@ -169,8 +169,8 @@
                     </div>
                 </div>
                 <div class="footer-links">
-                    <h3>Our Sections</h3>
-                    <ul>
+                    <h3 data-aos="zoom-in-right">Our Sections</h3>
+                    <ul data-aos="zoom-in-right">
                         <li><a href="#home">Home</a></li>
                         <li><a href="#category">Our Category</a></li>
                         <li><a href="#about">About US</a></li>
@@ -184,5 +184,11 @@
 
     
     <script src="script.js"></script>
+    <script src="aos-master/dist/aos.js"></script>
+
+    <script>
+        AOS.init();
+    </script>
+
 </body>
 </html>

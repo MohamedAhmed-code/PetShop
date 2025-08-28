@@ -61,7 +61,7 @@ body{
 .menu-icon {
   font-size: 28px;
   cursor: pointer;
-  display: none; /* يظهر بس في الموبايل */
+  display: none; 
   color: white;
 }
 
@@ -463,13 +463,6 @@ font-size: 5rem;
   border-radius: 10px;
 }
 
-.about-content .img-cat{
-  position: absolute;
-  right: 0;
-  margin-top: 200px;
-  width: 790px;
-  z-index: 1;
-}
 
 .about-text {
     z-index: 100;
@@ -511,7 +504,7 @@ font-size: 5rem;
 
 /* Products Section */
 .products {
-  padding: 80px 0;
+  padding: 150px 0;
 }
 
 .products h2 {
@@ -1745,4 +1738,31 @@ hr {
     .cart-header h1 {
         font-size: 2rem;
     }
+}
+
+.cityy label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #333;
+}
+
+.cityy select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #000;
+  margin-bottom: 15px;
+  font-size: 16px;
+  cursor: pointer;
+  background: #751a67;
+  transition: 0.3s;
+  color: #fff;
+  text-align: center;
+}
+
+.cityy select:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0,123,255,0.5);
 }
