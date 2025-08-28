@@ -14,7 +14,7 @@ function myFunction() {
   }
 }
 
-// يقفل القائمة بعد ما تضغط على أي لينك
+// Close menu when clicking on any link
 document.querySelectorAll('.nav a').forEach(link => {
   link.addEventListener('click', () => {
     var nav = document.getElementById("myTopnav");
@@ -208,43 +208,6 @@ function generateStars(rating) {
     stars += `<i class="fas fa-star${i <= rating ? "" : "-o"}" style="color: #FFA500;"></i>`
   }
   return stars
-}
-
-// Load products
-function loadProducts(category = "all") {
-  const productsGrid = document.getElementById("productsGrid")
-  if (!productsGrid) return
-
-  const filteredProducts = category === "all" ? products : products.filter((p) => p.category === category)
-
-  productsGrid.innerHTML = filteredProducts
-    .map(
-      (product) => `
-      <div class="product-card" data-category="${product.category}">
-                  <img src="${product.image}" alt="${product.name}" class="product-image">
-
-            <div class="content-prd">
-
-                  <div class="content-cart">
-                      <h3 class="product-name">${product.name}</h3>
-
-                        <div class="price-rate">
-                            <div class="product-price">$${product.price}</div>
-                            <div class="product-rating">
-                                <div class="stars">${generateStars(product.rating)}</div>
-                            </div>
-                        </div>
-                  </div>
-
-                  <div class="det-btn">
-                      <button class="btn-secondary" onclick="viewProduct(${product.id})">Details</button>
-                      <button class="btn-primary-product" onclick="addToCart(${product.id})" style="margin-top: 0.5rem;">Add to Cart</button>
-                  </div>
-            </div>
-      </div>
-    `,
-    )
-    .join("")
 }
 
 // View product details
@@ -476,32 +439,18 @@ function handleCheckout(event) {
   window.location.href = "index.html";
 }
 
-// Scroll to section
-function scrollToSection(sectionId) {
-  const section = document.getElementById(sectionId);
-  if (section) {
-    section.scrollIntoView({ behavior: "smooth" });
-  }
-}
-
-// Buy now function - direct to checkout
+// Buy now function - add to cart and go to checkout
 function buyNow(productId) {
   const product = products.find(p => p.id === productId);
   if (!product) return;
   
-  cart = [{
-    id: product.id,
-    name: product.name,
-    price: product.price,
-    image: product.image,
-    category: product.category,
-    quantity: 1
-  }];
+  // Add product to cart
+  addToCart(productId, 1);
   
-  localStorage.setItem("cart", JSON.stringify(cart));
-  updateCartCount();
-  
-  window.location.href = "checkout.html";
+  // Navigate to checkout after a short delay to allow cart update
+  setTimeout(() => {
+    window.location.href = "checkout.html";
+  }, 500);
 }
 
 // تحميل المنتجات بالتصميم الجديد
@@ -573,22 +522,23 @@ function filterProducts(category) {
 document.addEventListener("DOMContentLoaded", () => {
   updateCartCount();
 
+  // Better way to detect current page
   const path = window.location.pathname;
+  const page = path.split("/").pop();
 
-  if (path.includes("index.html") || path === "/") {
+  if (page === "index.html" || page === "" || page === "home.html") {
     loadNewProducts();
     
-  loadNewProducts();
-  document.querySelectorAll('.new-filter-btn').forEach(btn => {
-    btn.addEventListener('click', function() {
-      filterProducts(this.dataset.filter);
+    document.querySelectorAll('.new-filter-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        filterProducts(this.dataset.filter);
+      });
     });
-  });
-  } else if (path.includes("product.html")) {
+  } else if (page === "product.html") {
     loadProductDetails();
-  } else if (path.includes("cart.html")) {
+  } else if (page === "cart.html") {
     loadCartItems();
-  } else if (path.includes("checkout.html")) {
+  } else if (page === "checkout.html") {
     loadCheckoutItems();
 
     const checkoutForm = document.getElementById("checkoutForm");
@@ -628,6 +578,16 @@ if (!document.querySelector('#notification-styles')) {
   document.head.appendChild(style);
 }
 
+// Scroll to section
+function scrollToSection(sectionId) {
+  const section = document.getElementById(sectionId);
+  if (section) {
+    section.scrollIntoView({ behavior: "smooth" });
+  }
+}
+
+
+// Products data without duplicates
 const products = [
   {
     id: 1,
@@ -708,35 +668,5 @@ const products = [
     image: "imgs/pet11.png",
     rating: 4,
     description: "Essential vitamin supplement for birds to support overall health and feather quality."
-  },
-  {
-    id: 9,
-    name: "Premium Cat Food",
-    category: "cats",
-    price: 29.99,
-    oldPrice: 39.99,
-    image: "imgs/pet12.png",
-    rating: 5,
-    description: "Nutritious cat food formula designed for adult cats with sensitive stomachs."
-  },
-  {
-    id: 10,
-    name: "Fish Flakes",
-    category: "fish",
-    price: 14.99,
-    oldPrice: 19.99,
-    image: "imgs/pet11.png",
-    rating: 4,
-    description: "High-quality fish flakes with color enhancers and immune system support."
-  },
-  {
-    id: 11,
-    name: "Rabbit Pellets",
-    category: "rabbits",
-    price: 22.99,
-    oldPrice: 32.99,
-    image: "imgs/pet9.png",
-    rating: 5,
-    description: "Premium rabbit pellets with timothy hay and essential nutrients for digestive health."
   }
 ];
