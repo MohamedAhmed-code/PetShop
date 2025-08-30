@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout - Pet Store</title>
+    <title data-en="Checkout - Pet Store" data-ar="الدفع - متجر الحيوانات الأليفة">Checkout - Pet Store</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
@@ -18,7 +18,7 @@
     </style>
 
 </head>
-<body>
+<body dir="ltr">
     <!-- Header -->
     <header class="header page-header">
   <div class="container">
@@ -26,97 +26,99 @@
       <h2>Pet<span>Store</span></h2>
     </div>
 
-    <!-- زرار المينيو -->
-    <div class="menu-icon" id="menuIcon" onclick="myFunction()">☰</div>
 
-    <!-- القائمة -->
     <nav class="nav topnav" id="myTopnav">
-      <a href="index.html">Home</a>
-      <a href="index.html#category">Category</a>
-      <a href="index.html#about">About US</a>
-      <a href="index.html#shop">Shop</a>
+      <a href="index.html" data-en="Home" data-ar="الرئيسية">Home</a>
+      <a href="index.html#category" data-en="Category" data-ar="الفئات">Category</a>
+      <a href="index.html#about" data-en="About US" data-ar="من نحن">About US</a>
+      <a href="index.html#shop" data-en="Shop" data-ar="المتجر">Shop</a>
       <a href="cart.html" class="cart-link">
         <img src="imgs/cart-icon.png" alt="">
         <span class="cart-count" id="cartCount">0</span>
       </a>
     </nav>
+      <div class="language-switcher">
+          <button class="lang-btn" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="ar">AR</button>
+      </div>
+    <div class="menu-icon" id="menuIcon" onclick="myFunction()">☰</div>
   </div>
     </header>
     <!-- Checkout Content -->
     <section class="checkout-section">
         <div class="container">
-            <h1>Checkout</h1>
+            <h1 data-en="Checkout" data-ar="الدفع">Checkout</h1>
             <div class="checkout-content">
                 <div class="checkout-form">
-                    <h3>Customer Information</h3>
+                    <h3 data-en="Customer Information" data-ar="معلومات العميل">Customer Information</h3>
                     <form id="checkoutForm">
                         <div class="form-group">
-                            <label for="fullName">Full Name *</label>
+                            <label for="fullName" data-en="Full Name *" data-ar="الاسم الكامل *">Full Name *</label>
                             <input type="text" id="fullName" name="fullName" required>
                         </div>
                         <div class="form-group">
-                            <label for="phone">Phone Number *</label>
+                            <label for="phone" data-en="Phone Number *" data-ar="رقم الهاتف *">Phone Number *</label>
                             <input type="tel" id="phone" name="phone" required>
                         </div>
                         <div class="form-group cityy">
-                            <label for="city">Governorate</label>
+                            <label for="city" data-en="Governorate" data-ar="المحافظة">Governorate</label>
                                 <select id="city" name="city" required>
-                                    <option value="">-- اختر المحافظة --</option>
-                                    <option value="cairo">القاهرة</option>
-                                    <option value="giza">الجيزة</option>
-                                    <option value="alexandria">الإسكندرية</option>
-                                    <option value="sharqia">الشرقية</option>
-                                    <option value="gharbia">الغربية</option>
-                                    <option value="dakahlia">الدقهلية</option>
-                                    <option value="qalyubia">القليوبية</option>
-                                    <option value="monufia">المنوفية</option>
-                                    <option value="kafr_elsheikh">كفر الشيخ</option>
-                                    <option value="fayoum">الفيوم</option>
-                                    <option value="beni_suef">بني سويف</option>
-                                    <option value="minya">المنيا</option>
-                                    <option value="assiut">أسيوط</option>
-                                    <option value="sohag">سوهاج</option>
-                                    <option value="qena">قنا</option>
-                                    <option value="luxor">الأقصر</option>
-                                    <option value="aswan">أسوان</option>
-                                    <option value="ismailia">الإسماعيلية</option>
-                                    <option value="suez">السويس</option>
-                                    <option value="port_said">بورسعيد</option>
-                                    <option value="damietta">دمياط</option>
-                                    <option value="matruh">مطروح</option>
-                                    <option value="red_sea">البحر الأحمر</option>
-                                    <option value="new_valley">الوادي الجديد</option>
-                                    <option value="north_sinai">شمال سيناء</option>
-                                    <option value="south_sinai">جنوب سيناء</option>
+                                    <option value="" data-en="-- Select Governorate --" data-ar="-- اختر المحافظة --">-- اختر المحافظة --</option>
+                                    <option value="cairo" data-en="Cairo" data-ar="القاهرة">القاهرة</option>
+                                    <option value="giza" data-en="Giza" data-ar="الجيزة">الجيزة</option>
+                                    <option value="alexandria" data-en="Alexandria" data-ar="الإسكندرية">الإسكندرية</option>
+                                    <option value="sharqia" data-en="Sharqia" data-ar="الشرقية">الشرقية</option>
+                                    <option value="gharbia" data-en="Gharbia" data-ar="الغربية">الغربية</option>
+                                    <option value="dakahlia" data-en="Dakahlia" data-ar="الدقهلية">الدقهلية</option>
+                                    <option value="qalyubia" data-en="Qalyubia" data-ar="القليوبية">القليوبية</option>
+                                    <option value="monufia" data-en="Monufia" data-ar="المنوفية">المنوفية</option>
+                                    <option value="kafr_elsheikh" data-en="Kafr El Sheikh" data-ar="كفر الشيخ">كفر الشيخ</option>
+                                    <option value="fayoum" data-en="Fayoum" data-ar="الفيوم">الفيوم</option>
+                                    <option value="beni_suef" data-en="Beni Suef" data-ar="بني سويف">بني سويف</option>
+                                    <option value="minya" data-en="Minya" data-ar="المنيا">المنيا</option>
+                                    <option value="assiut" data-en="Assiut" data-ar="أسيوط">أسيوط</option>
+                                    <option value="sohag" data-en="Sohag" data-ar="سوهاج">سوهاج</option>
+                                    <option value="qena" data-en="Qena" data-ar="قنا">قنا</option>
+                                    <option value="luxor" data-en="Luxor" data-ar="الأقصر">الأقصر</option>
+                                    <option value="aswan" data-en="Aswan" data-ar="أسوان">أسوان</option>
+                                    <option value="ismailia" data-en="Ismailia" data-ar="الإسماعيلية">الإسماعيلية</option>
+                                    <option value="suez" data-en="Suez" data-ar="السويس">السويس</option>
+                                    <option value="port_said" data-en="Port Said" data-ar="بورسعيد">بورسعيد</option>
+                                    <option value="damietta" data-en="Damietta" data-ar="دمياط">دمياط</option>
+                                    <option value="matruh" data-en="Matruh" data-ar="مطروح">مطروح</option>
+                                    <option value="red_sea" data-en="Red Sea" data-ar="البحر الأحمر">البحر الأحمر</option>
+                                    <option value="new_valley" data-en="New Valley" data-ar="الوادي الجديد">الوادي الجديد</option>
+                                    <option value="north_sinai" data-en="North Sinai" data-ar="شمال سيناء">شمال سيناء</option>
+                                    <option value="south_sinai" data-en="South Sinai" data-ar="جنوب سيناء">جنوب سيناء</option>
                                 </select>
                         </div>
                         <div class="form-group">
-                            <label for="address">Address *</label>
+                            <label for="address" data-en="Address *" data-ar="العنوان *">Address *</label>
                             <textarea id="address" name="address" rows="3" required></textarea>
                         </div>
                         <div class="form-group">
-                            <label for="notes">Notes (Optional)</label>
+                            <label for="notes" data-en="Notes (Optional)" data-ar="ملاحظات (اختياري)">Notes (Optional)</label>
                             <textarea id="notes" name="notes" rows="2"></textarea>
                         </div>
-                        <button type="submit" class="btn-primary">Complete Order</button>
+                        <button type="submit" class="btn-primary" data-en="Complete Order" data-ar="إتمام الطلب">Complete Order</button>
                     </form>
                 </div>
                 <div class="order-summary">
-                    <h3>Order Summary</h3>
+                    <h3 data-en="Order Summary" data-ar="ملخص الطلب">Order Summary</h3>
                     <div class="order-items" id="orderItems">
                         <!-- Order items will be loaded by JavaScript -->
                     </div>
                     <div class="summary-totals">
                         <div class="summary-row">
-                            <span>Subtotal:</span>
+                            <span data-en="Subtotal:" data-ar="المجموع الفرعي:">Subtotal:</span>
                             <span id="checkoutSubtotal">$0.00</span>
                         </div>
                         <div class="summary-row">
-                            <span>Shipping:</span>
+                            <span data-en="Shipping:" data-ar="الشحن:">Shipping:</span>
                             <span id="checkoutShipping">$5.00</span>
                         </div>
                         <div class="summary-row total">
-                            <span>Total:</span>
+                            <span data-en="Total:" data-ar="الإجمالي:">Total:</span>
                             <span id="checkoutTotal">$5.00</span>
                         </div>
                     </div>
@@ -132,9 +134,9 @@
                 <div class="footer-brand">
                     <h3>Pet<span>Store</span></h3>
                     <div class="footer-info">
-                        <p><strong>MOHAMED AHMED</strong></p>
-                        <p>WEBSITE DESIGNER</p>
-                        <p>📞 +20 1271234564</p>
+                        <p data-en="<strong>MOHAMED AHMED</strong>" data-ar="<strong>محمد أحمد</strong>"><strong>MOHAMED AHMED</strong></p>
+                        <p data-en="WEBSITE DESIGNER" data-ar="مصمم مواقع">WEBSITE DESIGNER</p>
+                        <p data-aos="zoom-in-right" data-en="<a href=''>📞 +20 1271120594 </a>" data-ar="<a href=''>📞 +20 1271120594 </a>">📞 +20 1271120594<a href=""> +20 1271120594 </a></p>
                         <div class="social-icons">
                             <a href="#"><i class="fab fa-instagram"></i></a>
                             <a href="#"><i class="fab fa-facebook"></i></a>
@@ -143,13 +145,13 @@
                     </div>
                 </div>
                 <div class="footer-links">
-                    <h3>Our Sections</h3>
+                    <h3 data-en="Our Sections" data-ar="أقسامنا">Our Sections</h3>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="index.html#category">Our Category</a></li>
-                        <li><a href="index.html#about">About US</a></li>
-                        <li><a href="index.html#shop">Our Shop</a></li>
-                        <li><a href="cart.html">Shopping Cart</a></li>
+                        <li><a href="index.html" data-en="Home" data-ar="الرئيسية">Home</a></li>
+                        <li><a href="index.html#category" data-en="Our Category" data-ar="فئاتنا">Our Category</a></li>
+                        <li><a href="index.html#about" data-en="About US" data-ar="من نحن">About US</a></li>
+                        <li><a href="index.html#shop" data-en="Our Shop" data-ar="متجرنا">Our Shop</a></li>
+                        <li><a href="cart.html" data-en="Shopping Cart" data-ar="عربة التسوق">Shopping Cart</a></li>
                     </ul>
                 </div>
             </div>

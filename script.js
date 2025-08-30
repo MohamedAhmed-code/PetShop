@@ -35,7 +35,7 @@ document.addEventListener('click', (event) => {
   // لو المنيو مفتوحة
   if (nav.classList.contains("responsive")) {
     // لو الضغط مش على المنيو ولا على زرار الايكونة
-    if (!nav.contains(event.target) && event.target !== icon) {
+    if (!nav.contains(event.target) && event.target !== icon && !event.target.closest('.language-switcher')) {
       nav.classList.remove("responsive");
       icon.innerHTML = "☰";
       icon.classList.remove("open");
@@ -73,7 +73,7 @@ window.addEventListener("scroll", () => {
 
   navLinks.forEach(link => {
     link.classList.remove("active");
-    if (link.getAttribute("href") === "#" + current) {
+    if (link.getAttribute("href") && link.getAttribute("href").startsWith("#") && link.getAttribute("href").substring(1) === current) {
       link.classList.add("active");
     }
   });
@@ -93,6 +93,263 @@ navLinks.forEach(link => {
     }
   });
 });
+
+// Language Translation
+const translations = {
+  en: {
+    // General
+    "Home": "Home",
+    "Category": "Category",
+    "About US": "About US",
+    "Shop": "Shop",
+    "Shopping Cart": "Shopping Cart",
+    "Our Category": "Our Category",
+    "Our Shop": "Our Shop",
+    "MOHAMED AHMED": "MOHAMED AHMED",
+    "WEBSITE DESIGNER": "WEBSITE DESIGNER",
+    "Our Sections": "Our Sections",
+    "Remove": "Remove",
+    "Items": "Items",
+    "Shipping:": "Shipping:",
+    "Total:": "Total:",
+    "Proceed to Checkout": "Proceed to Checkout",
+    "Continue Shopping": "Continue Shopping",
+    "Checkout": "Checkout",
+    "Customer Information": "Customer Information",
+    "Full Name *": "Full Name *",
+    "Phone Number *": "Phone Number *",
+    "Governorate": "Governorate",
+    "-- Select Governorate --": "-- Select Governorate --",
+    "Address *": "Address *",
+    "Notes (Optional)": "Notes (Optional)",
+    "Complete Order": "Complete Order",
+    "Order Summary": "Order Summary",
+    "Subtotal:": "Subtotal:",
+    "Product not found.": "Product not found.",
+    "Quantity:": "Quantity:",
+    "Add to Cart": "Add to Cart",
+    "Other Products": "Other Products",
+    "View Details": "View Details",
+    "Your Cart is Empty": "Your Cart is Empty",
+    "Add some products to your cart to get started!": "Add some products to your cart to get started!",
+    "Product added to cart!": "Product added to cart!",
+    "Product removed from cart!": "Product removed from cart!",
+    "Your cart is already empty!": "Your cart is already empty!",
+    "Are you sure you want to clear your cart?": "Are you sure you want to clear your cart?",
+    "Cart cleared successfully!": "Cart cleared successfully!",
+    "Your cart is empty!": "Your cart is empty!",
+    "Please select a governorate before completing the order": "Please select a governorate before completing the order",
+    "Order sent via WhatsApp! Thank you for your purchase.": "Order sent via WhatsApp! Thank you for your purchase.",
+    "Details": "Details",
+    "Buy Now": "Buy Now",
+    "ALL": "ALL",
+    "CATS": "CATS",
+    "DOGS": "DOGS",
+    "BIRDS": "BIRDS",
+    "FISH": "FISH",
+    "ACCESSORIES": "ACCESSORIES",
+    "BEST": "BEST",
+    "FOOD": "FOOD",
+    "FOR YOUR ": "FOR YOUR ",
+    "PET": "PET",
+    "Everything that your pet were wants with best quality and best price": "Everything that your pet were wants with best quality and best price",
+    "Shop now": "Shop now",
+    "Pet Store": "Pet Store",
+    "Give your furry friend they're looking for by choosing the right food for your pet. This way, they'll immediately see your brand offering and they can one-click-listen.": "Give your furry friend they're looking for by choosing the right food for your pet. This way, they'll immediately see your brand offering and they can one-click-listen.",
+    "OUR PRODUCT": "OUR PRODUCT",
+    "THE SHOP": "THE SHOP",
+    "ON CAT FOODS": "ON CAT FOODS",
+    "ON DOG FOODS": "ON DOG FOODS",
+    "SHOP NOW": "SHOP NOW",
+    "Cairo": "Cairo",
+    "Giza": "Giza",
+    "Alexandria": "Alexandria",
+    "Sharqia": "Sharqia",
+    "Gharbia": "Gharbia",
+    "Dakahlia": "Dakahlia",
+    "Qalyubia": "Qalyubia",
+    "Monufia": "Monufia",
+    "Kafr El Sheikh": "Kafr El Sheikh",
+    "Fayoum": "Fayoum",
+    "Beni Suef": "Beni Suef",
+    "Minya": "Minya",
+    "Assiut": "Assiut",
+    "Sohag": "Sohag",
+    "Qena": "Qena",
+    "Luxor": "Luxor",
+    "Aswan": "Aswan",
+    "Ismailia": "Ismailia",
+    "Suez": "Suez",
+    "Port Said": "Port Said",
+    "Damietta": "Damietta",
+    "Matruh": "Matruh",
+    "Red Sea": "Red Sea",
+    "New Valley": "New Valley",
+    "North Sinai": "North Sinai",
+    "South Sinai": "South Sinai",
+    "Product Details - Pet Store": "Product Details - Pet Store",
+    "Shopping Cart - Pet Store": "Shopping Cart - Pet Store",
+    "Checkout - Pet Store": "Checkout - Pet Store",
+    "Pet Store - Best Food For Your Pet": "Pet Store - Best Food For Your Pet"
+  },
+  ar: {
+    // General
+    "Home": "الرئيسية",
+    "Category": "الفئات",
+    "About US": "من نحن",
+    "Shop": "المتجر",
+    "Shopping Cart": "عربة التسوق",
+    "Our Category": "فئاتنا",
+    "Our Shop": "متجرنا",
+    "MOHAMED AHMED": "محمد أحمد",
+    "WEBSITE DESIGNER": "مصمم مواقع",
+    "Our Sections": "أقسامنا",
+    "Remove": "حذف",
+    "Items": "المنتجات",
+    "Shipping:": "الشحن:",
+    "Total:": "الإجمالي:",
+    "Proceed to Checkout": "المتابعة للدفع",
+    "Continue Shopping": "متابعة التسوق",
+    "Checkout": "الدفع",
+    "Customer Information": "معلومات العميل",
+    "Full Name *": "الاسم الكامل *",
+    "Phone Number *": "رقم الهاتف *",
+    "Governorate": "المحافظة",
+    "-- Select Governorate --": "-- اختر المحافظة --",
+    "Address *": "العنوان *",
+    "Notes (Optional)": "ملاحظات (اختياري)",
+    "Complete Order": "إتمام الطلب",
+    "Order Summary": "ملخص الطلب",
+    "Subtotal:": ":المجموع الفرعي",
+    "Product not found.": "المنتج غير موجود.",
+    "Quantity:": "الكمية:",
+    "Add to Cart": "أضف إلى العربة",
+    "Other Products": "منتجات أخرى",
+    "View Details": "عرض التفاصيل",
+    "Your Cart is Empty": "عربة التسوق فارغة",
+    "Add some products to your cart to get started!": "أضف بعض المنتجات إلى عربة التسوق للبدء!",
+    "Product added to cart!": "تمت إضافة المنتج إلى العربة!",
+    "Product removed from cart!": "تمت إزالة المنتج من العربة!",
+    "Your cart is already empty!": "عربة التسوق فارغة بالفعل!",
+    "Are you sure you want to clear your cart?": "هل أنت متأكد أنك تريد إفراغ عربة التسوق؟",
+    "Cart cleared successfully!": "تم إفراغ العربة بنجاح!",
+    "Your cart is empty!": "عربة التسوق فارغة!",
+    "Please select a governorate before completing the order": "يرجى اختيار المحافظة قبل إكمال الطلب",
+    "Order sent via WhatsApp! Thank you for your purchase.": "تم إرسال الطلب عبر الواتساب! شكراً لشرائك.",
+    "Details": "التفاصيل",
+    "Buy Now": "اشترِ الآن",
+    "ALL": "الكل",
+    "CATS": "القطط",
+    "DOGS": "الكلاب",
+    "BIRDS": "الطيور",
+    "FISH": "الأسماك",
+    "ACCESSORIES": "الإكسسوارات",
+    "BEST": "أفضل",
+    "FOOD": "طعام",
+    "FOR YOUR ": "لحيوانك ",
+    "PET": "الأليف",
+    "Everything that your pet were wants with best quality and best price": "كل ما يريده حيوانك الأليف بأفضل جودة وأفضل سعر",
+    "Shop now": "تسوق الآن",
+    "Pet Store": "متجر الحيوانات الأليفة",
+    "Give your furry friend they're looking for by choosing the right food for your pet. This way, they'll immediately see your brand offering and they can one-click-listen.": "امنح صديقك الفروي ما يبحث عنه باختيار الطعام المناسب لحيوانك الأليف. بهذه الطريقة، سيرون عرض علامتك التجارية على الفور ويمكنهم الاستماع بنقرة واحدة.",
+    "OUR PRODUCT": "منتجاتنا",
+    "THE SHOP": "المتجر",
+    "ON CAT FOODS": "على أطعمة القطط",
+    "ON DOG FOODS": "على أطعمة الكلاب",
+    "SHOP NOW": "تسوق الآن",
+    "Cairo": "القاهرة",
+    "Giza": "الجيزة",
+    "Alexandria": "الإسكندرية",
+    "Sharqia": "الشرقية",
+    "Gharbia": "الغربية",
+    "Dakahlia": "الدقهلية",
+    "Qalyubia": "القليوبية",
+    "Monufia": "المنوفية",
+    "Kafr El Sheikh": "كفر الشيخ",
+    "Fayoum": "الفيوم",
+    "Beni Suef": "بني سويف",
+    "Minya": "المنيا",
+    "Assiut": "أسيوط",
+    "Sohag": "سوهاج",
+    "Qena": "قنا",
+    "Luxor": "الأقصر",
+    "Aswan": "أسوان",
+    "Ismailia": "الإسماعيلية",
+    "Suez": "السويس",
+    "Port Said": "بورسعيد",
+    "Damietta": "دمياط",
+    "Matruh": "مطروح",
+    "Red Sea": "البحر الأحمر",
+    "New Valley": "الوادي الجديد",
+    "North Sinai": "شمال سيناء",
+    "South Sinai": "جنوب سيناء",
+    "Product Details - Pet Store": "تفاصيل المنتج - متجر الحيوانات الأليفة",
+    "Shopping Cart - Pet Store": "عربة التسوق - متجر الحيوانات الأليفة",
+    "Checkout - Pet Store": "الدفع - متجر الحيوانات الأليفة",
+    "Pet Store - Best Food For Your Pet": "متجر الحيوانات الأليفة - أفضل طعام لحيوانك الأليف"
+  }
+};
+
+let currentLang = localStorage.getItem('lang') || 'en';
+
+function setLanguage(lang) {
+  currentLang = lang;
+  localStorage.setItem('lang', lang);
+
+  document.documentElement.lang = lang;
+  document.body.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
+  // Update text content
+  document.querySelectorAll('[data-en]').forEach(element => {
+    const enText = element.getAttribute('data-en');
+    const arText = element.getAttribute('data-ar');
+    element.innerHTML = lang === 'ar' ? arText : enText;
+  });
+
+  // Update title
+  const titleElement = document.querySelector('title');
+  if (titleElement) {
+    const enTitle = titleElement.getAttribute('data-en');
+    const arTitle = titleElement.getAttribute('data-ar');
+    titleElement.textContent = lang === 'ar' ? arTitle : enTitle;
+  }
+
+  // Update active language button
+  document.querySelectorAll('.lang-btn').forEach(button => {
+    if (button.dataset.lang === lang) {
+      button.classList.add('active');
+    } else {
+      button.classList.remove('active');
+    }
+  });
+
+  // Re-render dynamic content if necessary
+  if (document.getElementById('cartItemsContainer')) {
+    loadCartItems();
+  }
+  if (document.getElementById('orderItems')) {
+    loadCheckoutItems();
+  }
+  if (document.getElementById('newProductsGrid')) {
+    loadNewProducts(document.querySelector('.new-filter-btn.active')?.dataset.filter || 'all');
+  }
+  if (document.getElementById('productDetailContent')) {
+    loadProductDetails();
+  }
+}
+
+// Initialize language on page load
+document.addEventListener('DOMContentLoaded', () => {
+  setLanguage(currentLang);
+
+  // Add event listeners for language buttons
+  document.querySelectorAll('.lang-btn').forEach(button => {
+    button.addEventListener('click', () => {
+      setLanguage(button.dataset.lang);
+    });
+  });
+});
+
 
 // Cart functionality
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -122,6 +379,7 @@ function addToCart(productId, quantity = 1) {
     cart.push({
       id: productId,
       name: product.name,
+      name_ar: product.name_ar, // Add Arabic name
       price: product.price,
       image: product.image,
       category: product.category,
@@ -133,7 +391,7 @@ function addToCart(productId, quantity = 1) {
   updateCartCount();
   
   // Show notification
-  showNotification("Product added to cart!");
+  showNotification(translations[currentLang]["Product added to cart!"]);
 }
 
 // Show notification
@@ -155,14 +413,14 @@ function showNotification(message, type = "success") {
   notification.style.cssText = `
     position: fixed;
     top: 100px;
-    right: 20px;
+    ${currentLang === 'ar' ? 'left: 20px;' : 'right: 20px;'}
     background: ${type === 'success' ? '#28a745' : '#17a2b8'};
     color: white;
     padding: 12px 20px;
     border-radius: 5px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     z-index: 10000;
-    animation: slideInRight 0.3s ease-out;
+    animation: ${currentLang === 'ar' ? 'slideInLeft' : 'slideInRight'} 0.3s ease-out;
   `;
   
   const notificationContent = notification.querySelector(".notification-content");
@@ -175,7 +433,7 @@ function showNotification(message, type = "success") {
   document.body.appendChild(notification);
   
   setTimeout(() => {
-    notification.style.animation = "slideOutRight 0.3s ease-in";
+    notification.style.animation = `${currentLang === 'ar' ? 'slideOutLeft' : 'slideOutRight'} 0.3s ease-in`;
     setTimeout(() => {
       if (notification.parentNode) {
         notification.parentNode.removeChild(notification);
@@ -190,7 +448,7 @@ function removeFromCart(productId) {
   localStorage.setItem("cart", JSON.stringify(cart));
   updateCartCount();
   loadCartItems();
-  showNotification("Product removed from cart!", "info");
+  showNotification(translations[currentLang]["Product removed from cart!"], "info");
 }
 
 // Update quantity
@@ -207,16 +465,16 @@ function updateQuantity(productId, quantity) {
 // Clear cart
 function clearCart() {
   if (cart.length === 0) {
-    showNotification("Your cart is already empty!", "info");
+    showNotification(translations[currentLang]["Your cart is already empty!"], "info");
     return;
   }
   
-  if (confirm("Are you sure you want to clear your cart?")) {
+  if (confirm(translations[currentLang]["Are you sure you want to clear your cart?"])) {
     cart = [];
     localStorage.setItem("cart", JSON.stringify(cart));
     updateCartCount();
     loadCartItems();
-    showNotification("Cart cleared successfully!", "info");
+    showNotification(translations[currentLang]["Cart cleared successfully!"], "info");
   }
 }
 
@@ -241,26 +499,29 @@ function loadProductDetails() {
   const product = products.find((p) => p.id === productId)
 
   if (!product) {
-    document.getElementById("productDetailContent").innerHTML = "<p>Product not found.</p>"
+    document.getElementById("productDetailContent").innerHTML = `<p>${translations[currentLang]["Product not found."]}</p>`
     return
   }
 
+  const productName = currentLang === 'ar' ? product.name_ar : product.name;
+  const productDescription = currentLang === 'ar' ? product.description_ar : product.description;
+
   document.getElementById("productDetailContent").innerHTML = `
         <div class="product-detail-images">
-            <img src="${product.image}" alt="${product.name}">
+            <img src="${product.image}" alt="${productName}">
         </div>
         <div class="product-detail-info">
-            <h1>${product.name}</h1>
+            <h1>${productName}</h1>
             <div class="price">$${product.price}</div>
             <div class="product-rating">
                 <div class="stars">${generateStars(product.rating)}</div>
             </div>
-            <div class="description">${product.description}</div>
+            <div class="description">${productDescription}</div>
             <div class="quantity-selector">
-                <label for="quantity">Quantity:</label>
+                <label for="quantity">${translations[currentLang]["Quantity:"]}</label>
                 <input type="number" id="quantity" value="1" min="1" max="10">
             </div>
-            <button class="btn-primary" onclick="addToCartFromDetails(${product.id})">Add to Cart</button>
+            <button class="btn-primary" onclick="addToCartFromDetails(${product.id})">${translations[currentLang]["Add to Cart"]}</button>
         </div>
     `
 
@@ -271,13 +532,13 @@ function loadProductDetails() {
       .map(
         (product) => `
             <div class="product-card">
-                <img src="${product.image}" alt="${product.name}" class="product-image">
-                <h3 class="product-name">${product.name}</h3>
+                <img src="${product.image}" alt="${currentLang === 'ar' ? product.name_ar : product.name}" class="product-image">
+                <h3 class="product-name">${currentLang === 'ar' ? product.name_ar : product.name}</h3>
                 <div class="product-price">$${product.price}</div>
                 <div class="product-rating">
                     <div class="stars">${generateStars(product.rating)}</div>
                 </div>
-                <button class="btn-secondary" onclick="viewProduct(${product.id})">View Details</button>
+                <button class="btn-secondary" onclick="viewProduct(${product.id})">${translations[currentLang]["View Details"]}</button>
             </div>
         `,
       )
@@ -299,9 +560,9 @@ function loadCartItems() {
   if (cart.length === 0) {
     cartItemsContainer.innerHTML = `
       <div class="empty-cart-message">
-        <h2>Your Cart is Empty</h2>
-        <p>Add some products to your cart to get started!</p>
-        <a href="index.html" class="btn-primary">Continue Shopping</a>
+        <h2>${translations[currentLang]["Your Cart is Empty"]}</h2>
+        <p>${translations[currentLang]["Add some products to your cart to get started!"]}</p>
+        <a href="index.html" class="btn-primary">${translations[currentLang]["Continue Shopping"]}</a>
       </div>
     `;
     updateCartSummary();
@@ -311,20 +572,21 @@ function loadCartItems() {
   cartItemsContainer.innerHTML = cart
     .map((item) => {
       const categoryNames = {
-        'dogs': 'DOGS',
-        'cats': 'CATS',
-        'birds': 'BIRDS',
-        'fish': 'FISH',
-        'rabbits': 'RABBITS'
+        'dogs': translations[currentLang]['DOGS'],
+        'cats': translations[currentLang]['CATS'],
+        'birds': translations[currentLang]['BIRDS'],
+        'fish': translations[currentLang]['FISH'],
+        'accessories': translations[currentLang]['ACCESSORIES'] // Updated category name
       };
       
       const categoryName = categoryNames[item.category] || item.category.toUpperCase();
-      
+      const itemName = currentLang === 'ar' ? item.name_ar : item.name; // Use translated name
+
       return `
         <div class="cart-item-card" >
-          <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+          <img src="${item.image}" alt="${itemName}" class="cart-item-image">
           <div class="cart-item-details">
-            <h3 class="cart-item-name">${item.name}</h3>
+            <h3 class="cart-item-name">${itemName}</h3>
             <span class="cart-item-category">${categoryName}</span>
             <div class="cart-item-price">$${item.price.toFixed(2)}</div>
             
@@ -337,12 +599,12 @@ function loadCartItems() {
                 <i class="fas fa-plus"></i>
               </button>
               <button class="remove-item-btn" onclick="removeFromCart(${item.id})">
-                <i class="fas fa-trash"></i> Remove
+                <i class="fas fa-trash"></i> ${translations[currentLang]["Remove"]}
               </button>
             </div>
             
-            <div class="cart-item-subtotal">
-              <span>Subtotal:</span>
+            <div class="cart-item-subtotal subtotal-container">
+              <span>${translations[currentLang]["Subtotal:"]}</span>
               <span>$${(item.price * item.quantity).toFixed(2)}</span>
             </div>
           </div>
@@ -383,7 +645,7 @@ function updateCartSummary() {
 // Go to checkout
 function goToCheckout() {
   if (cart.length === 0) {
-    showNotification("Your cart is empty!", "info");
+    showNotification(translations[currentLang]["Your cart is empty!"], "info");
     return;
   }
   window.location.href = "checkout.html";
@@ -399,8 +661,8 @@ function loadCheckoutItems() {
       (item) => `
         <div class="order-item">
             <div>
-                <strong>${item.name}</strong><br>
-                <small>Quantity: ${item.quantity}</small>
+                <strong>${currentLang === 'ar' ? item.name_ar : item.name}</strong><br>
+                <small>${translations[currentLang]["Quantity:"]} ${item.quantity}</small>
             </div>
             <div>$${(item.price * item.quantity).toFixed(2)}</div>
         </div>
@@ -418,7 +680,7 @@ function handleCheckout(event) {
   // التحقق من اختيار المحافظة
   const citySelect = document.getElementById("city");
   if (!citySelect.value) {
-    alert("يرجى اختيار المحافظة قبل إكمال الطلب");
+    alert(translations[currentLang]["Please select a governorate before completing the order"]);
     citySelect.focus();
     return;
   }
@@ -438,52 +700,52 @@ function handleCheckout(event) {
 
   // خريطة أسماء المحافظات العربية
   const governorates = {
-    "cairo": "القاهرة",
-    "giza": "الجيزة",
-    "alexandria": "الإسكندرية",
-    "sharqia": "الشرقية",
-    "gharbia": "الغربية",
-    "dakahlia": "الدقهلية",
-    "qalyubia": "القليوبية",
-    "monufia": "المنوفية",
-    "kafr_elsheikh": "كفر الشيخ",
-    "fayoum": "الفيوم",
-    "beni_suef": "بني سويف",
-    "minya": "المنيا",
-    "assiut": "أسيوط",
-    "sohag": "سوهاج",
-    "qena": "قنا",
-    "luxor": "الأقصر",
-    "aswan": "أسوان",
-    "ismailia": "الإسماعيلية",
-    "suez": "السويس",
-    "port_said": "بورسعيد",
-    "damietta": "دمياط",
-    "matruh": "مطروح",
-    "red_sea": "البحر الأحمر",
-    "new_valley": "الوادي الجديد",
-    "north_sinai": "شمال سيناء",
-    "south_sinai": "جنوب سيناء"
+    "cairo": translations[currentLang]["Cairo"],
+    "giza": translations[currentLang]["Giza"],
+    "alexandria": translations[currentLang]["Alexandria"],
+    "sharqia": translations[currentLang]["Sharqia"],
+    "gharbia": translations[currentLang]["Gharbia"],
+    "dakahlia": translations[currentLang]["Dakahlia"],
+    "qalyubia": translations[currentLang]["Qalyubia"],
+    "monufia": translations[currentLang]["Monufia"],
+    "kafr_elsheikh": translations[currentLang]["Kafr El Sheikh"],
+    "fayoum": translations[currentLang]["Fayoum"],
+    "beni_suef": translations[currentLang]["Beni Suef"],
+    "minya": translations[currentLang]["Minya"],
+    "assiut": translations[currentLang]["Assiut"],
+    "sohag": translations[currentLang]["Sohag"],
+    "qena": translations[currentLang]["Qena"],
+    "luxor": translations[currentLang]["Luxor"],
+    "aswan": translations[currentLang]["Aswan"],
+    "ismailia": translations[currentLang]["Ismailia"],
+    "suez": translations[currentLang]["Suez"],
+    "port_said": translations[currentLang]["Port Said"],
+    "damietta": translations[currentLang]["Damietta"],
+    "matruh": translations[currentLang]["Matruh"],
+    "red_sea": translations[currentLang]["Red Sea"],
+    "new_valley": translations[currentLang]["New Valley"],
+    "north_sinai": translations[currentLang]["North Sinai"],
+    "south_sinai": translations[currentLang]["South Sinai"]
   };
 
-  let message = `🛒 *طلب جديد من متجر الحيوانات الأليفة*\n\n`;
-  message += `👤 *معلومات العميل:*\n`;
-  message += `الاسم: ${customerInfo.fullName}\n`;
-  message += `الهاتف: ${customerInfo.phone}\n`;
-  message += `المحافظة: ${governorates[customerInfo.city] || customerInfo.city}\n`;
-  message += `العنوان: ${customerInfo.address}\n`;
-  message += `ملاحظات: ${customerInfo.notes}\n\n`;
+  let message = `🛒 *${translations[currentLang]["New order from Pet Store"]}*\n\n`;
+  message += `👤 *${translations[currentLang]["Customer Information"]}:*\n`;
+  message += `${translations[currentLang]["Full Name *"].replace('*', '')}: ${customerInfo.fullName}\n`;
+  message += `${translations[currentLang]["Phone Number *"].replace('*', '')}: ${customerInfo.phone}\n`;
+  message += `${translations[currentLang]["Governorate"]}: ${governorates[customerInfo.city] || customerInfo.city}\n`;
+  message += `${translations[currentLang]["Address *"].replace('*', '')}: ${customerInfo.address}\n`;
+  message += `${translations[currentLang]["Notes (Optional)"].replace('(Optional)', '')}: ${customerInfo.notes}\n\n`;
 
-  message += `📦 *تفاصيل الطلب:*\n`;
+  message += `📦 *${translations[currentLang]["Order Details"]}:*\n`;
   cart.forEach((item) => {
-    message += `• ${item.name} x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}\n`;
+    message += `• ${currentLang === 'ar' ? item.name_ar : item.name} x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}\n`;
   });
 
-  message += `\n💰 *ملخص الطلب:*\n`;
-  message += `المجموع: $${subtotal.toFixed(2)}\n`;
-  message += `الشحن: $${shipping.toFixed(2)}\n`;
-  message += `*الإجمالي: $${total.toFixed(2)}*\n\n`;
-  message += `شكراً لطلبك! 🐾`;
+  message += `\n💰 *${translations[currentLang]["Order Summary"]}:*\n`;
+  message += `${translations[currentLang]["Subtotal:"]} $${subtotal.toFixed(2)}\n`;
+  message += `${translations[currentLang]["Shipping:"]} $${shipping.toFixed(2)}\n`;
+  message += `*${translations[currentLang]["Total:"]} $${total.toFixed(2)}*\n\n`;
+  message += `${translations[currentLang]["Thank you for your order!"]} 🐾`;
 
   const phoneNumber = "201271120594";
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
@@ -494,7 +756,7 @@ function handleCheckout(event) {
   localStorage.setItem("cart", JSON.stringify(cart));
   updateCartCount();
 
-  alert("تم إرسال الطلب عبر الواتساب! شكراً لشرائك.");
+  alert(translations[currentLang]["Order sent via WhatsApp! Thank you for your purchase."]);
   window.location.href = "index.html";
 }
 
@@ -531,22 +793,23 @@ function loadNewProducts(category = "all") {
       }
 
       const categoryNames = {
-        'dogs': 'dogs',
-        'cats': 'cats',
-        'birds': 'birds',
-        'fish': 'fish',
-        'rabbits': 'rabbits'
+        'dogs': translations[currentLang]['DOGS'],
+        'cats': translations[currentLang]['CATS'],
+        'birds': translations[currentLang]['BIRDS'],
+        'fish': translations[currentLang]['FISH'],
+        'accessories': translations[currentLang]['ACCESSORIES'] // Updated category name
       };
       const categoryName = categoryNames[product.category] || product.category;
+      const productName = currentLang === 'ar' ? product.name_ar : product.name;
 
       return `
         <div class="new-product-card" data-category="${product.category}" data-aos="zoom-in-up">
           <div class="new-product-image">
-            <img src="${product.image}" alt="${product.name}">
+            <img src="${product.image}" alt="${productName}">
             <span class="new-category-badge">${categoryName}</span>
           </div>
           <div class="new-product-content">
-            <h3 class="new-product-title">${product.name}</h3>
+            <h3 class="new-product-title">${productName}</h3>
             <div class="new-product-rating">
               ${starsHtml}
             </div>
@@ -555,8 +818,8 @@ function loadNewProducts(category = "all") {
               <span class="new-old-price">$${product.oldPrice.toFixed(2)}</span>
             </div>
             <div class="new-product-buttons">
-              <a href="product.html?id=${product.id}" class="new-btn-details">Details</a>
-              <button class="new-btn-buy" onclick="buyNow(${product.id})">Buy Now</button>
+              <a href="product.html?id=${product.id}" class="new-btn-details">${translations[currentLang]["Details"]}</a>
+              <button class="new-btn-buy" onclick="buyNow(${product.id})">${translations[currentLang]["Buy Now"]}</button>
             </div>
           </div>
         </div>
@@ -633,6 +896,27 @@ if (!document.querySelector('#notification-styles')) {
         opacity: 0;
       }
     }
+    @keyframes slideInLeft {
+      from {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+    
+    @keyframes slideOutLeft {
+      from {
+        transform: translateX(0);
+        opacity: 1;
+      }
+      to {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+    }
   `;
   document.head.appendChild(style);
 }
@@ -649,113 +933,159 @@ function scrollToSection(sectionId) {
 // Products data without duplicates
 const products = [
 {
-id: 1,
+    id: 1,
     name: "Premium Dog Food",
+    name_ar: "طعام كلاب فاخر",
     category: "dogs",
     price: 29.99,
     oldPrice: 39.99,
     image: "imgs/pet12.png",
     rating: 5,
-    description: "High-quality dog food with premium ingredients for optimal nutrition and health."
+    description: "High-quality dog food with premium ingredients for optimal nutrition and health.",
+    description_ar: "طعام كلاب عالي الجودة بمكونات ممتازة لتغذية وصحة مثالية."
   },
   {
     id: 2,
     name: "Cat Nutrition Plus",
+    name_ar: "غذاء القطط بلس",
     category: "cats",
     price: 24.99,
     oldPrice: 34.99,
     image: "imgs/pet9.png",
     rating: 4,
-    description: "Nutritious cat food formula designed for adult cats with sensitive stomachs."
+    description: "Nutritious cat food formula designed for adult cats with sensitive stomachs.",
+    description_ar: "تركيبة طعام قطط مغذية مصممة للقطط البالغة ذات المعدة الحساسة."
   },
   {
     id: 3,
     name: "Bird Seed Mix",
+    name_ar: "خليط بذور الطيور",
     category: "birds",
     price: 19.99,
     oldPrice: 29.99,
     image: "imgs/pet10.png",
     rating: 5,
-    description: "Nutritious bird seed mix with sunflower seeds, millet, and essential vitamins."
+    description: "Nutritious bird seed mix with sunflower seeds, millet, and essential vitamins.",
+    description_ar: "خليط بذور طيور مغذي مع بذور عباد الشمس والدخن والفيتامينات الأساسية."
   },
   {
     id: 4,
     name: "Fish Flakes",
+    name_ar: "رقائق السمك",
     category: "fish",
     price: 14.99,
     oldPrice: 19.99,
     image: "imgs/pet11.png",
     rating: 4,
-    description: "High-quality fish flakes with color enhancers and immune system support."
+    description: "High-quality fish flakes with color enhancers and immune system support.",
+    description_ar: "رقائق سمك عالية الجودة مع معززات الألوان ودعم الجهاز المناعي."
   },
   {
     id: 5,
-    name: "Rabbit Pellets",
-    category: "rabbits",
-    price: 22.99,
-    oldPrice: 32.99,
-    image: "imgs/pet12.png",
+    name: "Pet Carrier Bag",
+    name_ar: "حقيبة حمل الحيوانات الأليفة",
+    category: "accessories",
+    price: 35.99,
+    oldPrice: 45.99,
+    image: "imgs/accessories-1.webp", // Temporary image
     rating: 5,
-    description: "Premium rabbit pellets with timothy hay and essential nutrients for digestive health."
+    description: "Comfortable and secure carrier bag for small pets, ideal for travel.",
+    description_ar: "حقيبة حمل مريحة وآمنة للحيوانات الأليفة الصغيرة، مثالية للسفر."
   },
   {
     id: 6,
-    name: "Dog Treats",
+    name: "Dog Leash & Collar Set",
+    name_ar: "طوق ومقود للكلاب",
     category: "dogs",
     price: 16.99,
     oldPrice: 21.99,
     image: "imgs/pet9.png",
     rating: 4,
-    description: "Delicious and healthy treats for your furry friend, made with natural ingredients."
+    description: "Durable and stylish leash and collar set for daily walks.",
+    description_ar: "طوق ومقود متين وأنيق للمشي اليومي."
   },
   {
     id: 7,
-    name: "Cat Treats",
+    name: "Cat Scratching Post",
+    name_ar: "عمود خدش للقطط",
     category: "cats",
-    price: 12.99,
-    oldPrice: 17.99,
+    price: 28.99,
+    oldPrice: 35.99,
     image: "imgs/pet10.png",
     rating: 5,
-    description: "Irresistible treats for your feline companion, with added vitamins and minerals."
+    description: "Sturdy scratching post to keep your cat entertained and protect furniture.",
+    description_ar: "عمود خدش قوي لإبقاء قطتك مستمتعة وحماية الأثاث."
   },
   {
     id: 8,
-    name: "Bird Vitamins",
+    name: "Bird Cage Toy",
+    name_ar: "لعبة قفص الطيور",
     category: "birds",
-    price: 18.99,
-    oldPrice: 23.99,
+    price: 11.99,
+    oldPrice: 15.99,
     image: "imgs/pet11.png",
     rating: 4,
-    description: "Essential vitamin supplement for birds to support overall health and feather quality."
+    description: "Colorful and engaging toy for birds to peck and play with.",
+    description_ar: "لعبة ملونة وجذابة للطيور للنقر واللعب بها."
   },
   {
     id: 9,
-    name: "Premium Cat Food",
+    name: "Premium Cat Food (Large Bag)",
+    name_ar: "طعام قطط فاخر (كيس كبير)",
     category: "cats",
-    price: 29.99,
-    oldPrice: 39.99,
+    price: 49.99,
+    oldPrice: 59.99,
     image: "imgs/pet12.png",
     rating: 5,
-    description: "Nutritious cat food formula designed for adult cats with sensitive stomachs."
+    description: "Large bag of nutritious cat food for long-lasting supply.",
+    description_ar: "كيس كبير من طعام القطط المغذي لإمداد طويل الأمد."
   },
   {
     id: 10,
-    name: "Fish Flakes",
+    name: "Aquarium Decor Set",
+    name_ar: "مجموعة ديكور حوض السمك",
     category: "fish",
-    price: 14.99,
-    oldPrice: 19.99,
+    price: 21.99,
+    oldPrice: 27.99,
     image: "imgs/pet11.png",
     rating: 4,
-    description: "High-quality fish flakes with color enhancers and immune system support."
+    description: "Assorted decorative items to enhance your fish tank's aesthetic.",
+    description_ar: "عناصر زخرفية متنوعة لتعزيز جمال حوض السمك الخاص بك."
   },
   {
     id: 11,
-    name: "Rabbit Pellets",
-    category: "rabbits",
-    price: 22.99,
-    oldPrice: 32.99,
-    image: "imgs/pet9.png",
+    name: "Pet Grooming Brush",
+    name_ar: "فرشاة تصفيف الحيوانات الأليفة",
+    category: "accessories",
+    price: 15.99,
+    oldPrice: 20.99,
+    image: "imgs/accessories-2.webp", // Temporary image
     rating: 5,
-    description: "Premium rabbit pellets with timothy hay and essential nutrients for digestive health."
+    description: "Gentle grooming brush for all types of pet fur, removes loose hair.",
+    description_ar: "فرشاة تصفيف لطيفة لجميع أنواع فراء الحيوانات الأليفة، تزيل الشعر المتساقط."
+  },
+  {
+    id: 12,
+    name: "Interactive Pet Toy",
+    name_ar: "لعبة تفاعلية للحيوانات الأليفة",
+    category: "accessories",
+    price: 18.50,
+    oldPrice: 25.00,
+    image: "imgs/accessories-4.webp", // Temporary image
+    rating: 4,
+    description: "Engaging toy that stimulates your pet's mind and encourages play.",
+    description_ar: "لعبة جذابة تحفز عقل حيوانك الأليف وتشجعه على اللعب."
+  },
+  {
+    id: 13,
+    name: "Pet Food Bowl",
+    name_ar: "وعاء طعام الحيوانات الأليفة",
+    category: "accessories",
+    price: 9.99,
+    oldPrice: 12.99,
+    image: "imgs/accessories-3.jpg", // Temporary image
+    rating: 5,
+    description: "Durable and easy-to-clean food bowl for cats and dogs.",
+    description_ar: "وعاء طعام متين وسهل التنظيف للقطط والكلاب."
   }
 ];

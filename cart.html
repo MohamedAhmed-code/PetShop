@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopping Cart - Pet Store</title>
+    <title data-en="Shopping Cart - Pet Store" data-ar="عربة التسوق - متجر الحيوانات الأليفة">Shopping Cart - Pet Store</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -16,24 +16,28 @@
         }
     </style>
 </head>
-<body>
+<body dir="ltr">
     <!-- Header -->
     <header class="header page-header">
         <div class="container">
             <div class="logo">
                 <h2>Pet<span>Store</span></h2>
             </div>
-            <div class="menu-icon" id="menuIcon" onclick="myFunction()">☰</div>
             <nav class="nav topnav" id="myTopnav">
-                <a href="index.html">Home</a>
-                <a href="index.html#category">Category</a>
-                <a href="index.html#about">About US</a>
-                <a href="index.html#shop">Shop</a>
+                <a href="index.html" data-en="Home" data-ar="الرئيسية">Home</a>
+                <a href="index.html#category" data-en="Category" data-ar="الفئات">Category</a>
+                <a href="index.html#about" data-en="About US" data-ar="من نحن">About US</a>
+                <a href="index.html#shop" data-en="Shop" data-ar="المتجر">Shop</a>
                 <a href="cart.html" class="cart-link">
                     <img src="imgs/cart-icon.png" alt="" class="active">
                     <span class="cart-count" id="cartCount">0</span>
                 </a>
             </nav>
+                <div class="language-switcher">
+                    <button class="lang-btn" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="ar">AR</button>
+                </div>
+            <div class="menu-icon" id="menuIcon" onclick="myFunction()">☰</div>
         </div>
     </header>
 
@@ -41,9 +45,9 @@
     <section class="cart-section">
         <div class="container">
             <div class="cart-header">
-                <h1>Shopping Cart</h1>
+                <h1 data-en="Shopping Cart" data-ar="عربة التسوق">Shopping Cart</h1>
                 <button class="clear-cart-btn" onclick="clearCart()">
-                    <i class="fas fa-trash-alt"></i> Clear Cart
+                    <i class="fas fa-trash-alt"></i> <span data-en="Clear Cart" data-ar="إفراغ العربة">Clear Cart</span>
                 </button>
             </div>
             
@@ -53,24 +57,24 @@
                 </div>
                 
                 <div class="order-summary-card">
-                    <h2>Order Summary</h2>
+                    <h2 data-en="Order Summary" data-ar="ملخص الطلب">Order Summary</h2>
                     <div class="summary-details">
                         <div class="summary-row">
-                            <span>Items (<span id="itemsCount">0</span>):</span>
+                            <span data-en="Items" data-ar="المنتجات">Items (<span id="itemsCount">0</span>):</span>
                             <span id="subtotal">$0.00</span>
                         </div>
                         <div class="summary-row">
-                            <span>Shipping:</span>
+                            <span data-en="Shipping:" data-ar="الشحن:">Shipping:</span>
                             <span class="free-shipping">$10</span>
                         </div>
                         <div class="summary-row total">
-                            <span>Total:</span>
+                            <span data-en="Total:" data-ar="الإجمالي:">Total:</span>
                             <span id="total">$0.00</span>
                         </div>
                     </div>
-                    <button class="btn-primary checkout-btn" onclick="goToCheckout()">Proceed to Checkout</button>
+                    <button class="btn-primary checkout-btn" onclick="goToCheckout()" data-en="Proceed to Checkout" data-ar="المتابعة للدفع">Proceed to Checkout</button>
                     <a href="index.html" class="continue-shopping-btn">
-                        <i class="fas fa-arrow-left"></i> Continue Shopping
+                        <i class="fas fa-arrow-left"></i> <span data-en="Continue Shopping" data-ar="متابعة التسوق">Continue Shopping</span>
                     </a>
                 </div>
             </div>
@@ -84,9 +88,9 @@
                 <div class="footer-brand">
                     <h3>Pet<span>Store</span></h3>
                     <div class="footer-info">
-                        <p><strong>MOHAMED AHMED</strong></p>
-                        <p>WEBSITE DESIGNER</p>
-                        <p>📞 +20 1271234564</p>
+                        <p data-en="<strong>MOHAMED AHMED</strong>" data-ar="<strong>محمد أحمد</strong>"><strong>MOHAMED AHMED</strong></p>
+                        <p data-en="WEBSITE DESIGNER" data-ar="مصمم مواقع">WEBSITE DESIGNER</p>
+                        <p data-aos="zoom-in-right" data-en="<a href=''>📞 +20 1271120594 </a>" data-ar="<a href=''>📞 +20 1271120594 </a>">📞 +20 1271120594<a href=""> +20 1271120594 </a></p>
                         <div class="social-icons">
                             <a href="#"><i class="fab fa-instagram"></i></a>
                             <a href="#"><i class="fab fa-facebook"></i></a>
@@ -95,13 +99,13 @@
                     </div>
                 </div>
                 <div class="footer-links">
-                    <h3>Our Sections</h3>
+                    <h3 data-en="Our Sections" data-ar="أقسامنا">Our Sections</h3>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="index.html#category">Our Category</a></li>
-                        <li><a href="index.html#about">About US</a></li>
-                        <li><a href="index.html#shop">Our Shop</a></li>
-                        <li><a href="cart.html">Shopping Cart</a></li>
+                        <li><a href="index.html" data-en="Home" data-ar="الرئيسية">Home</a></li>
+                        <li><a href="index.html#category" data-en="Our Category" data-ar="فئاتنا">Our Category</a></li>
+                        <li><a href="index.html#about" data-en="About US" data-ar="من نحن">About US</a></li>
+                        <li><a href="index.html#shop" data-en="Our Shop" data-ar="متجرنا">Our Shop</a></li>
+                        <li><a href="cart.html" data-en="Shopping Cart" data-ar="عربة التسوق">Shopping Cart</a></li>
                     </ul>
                 </div>
             </div>

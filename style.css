@@ -71,6 +71,11 @@ body{
     display: block;
   }
 
+  
+  body[dir="rtl"] .footer-info , .footer-brand h3 {
+    text-align: center;
+  }
+
   .nav {
     display: none;             /* نخفيها مبدئي */
     flex-direction: column;
@@ -275,6 +280,10 @@ body{
   background-size: cover;
 }
 
+body[dir="rtl"] .hero{
+    background-image: url(imgs/Pt.png);
+}
+
 .hero-text {
     font-size: 65px;
 }
@@ -375,7 +384,6 @@ body{
   grid-template-columns: repeat(5, 1fr);
   gap: 2rem;
   max-width: 1000px;
-  margin: 0 auto;
 }
 
 .category-item {
@@ -1157,7 +1165,7 @@ hr {
       text-align: center;
   }
 
-  .hero {
+  .hero , body[dir="rtl"] .hero{
     background-image: url(imgs/Pe.png);
   }
 
@@ -1765,4 +1773,152 @@ hr {
   border-color: #007bff;
   outline: none;
   box-shadow: 0 0 5px rgba(0,123,255,0.5);
+}
+
+
+/* Language Switcher Styles */
+.language-switcher {
+    display: flex;
+    gap: 5px;
+    margin-left: 15px; /* Adjust as needed */
+}
+
+.lang-btn {
+    background: #b3189b91;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.lang-btn:hover {
+    background: #ff8c00;
+}
+
+.lang-btn.active {
+    background: #ffa500; /* Active language button color */
+}
+
+/* RTL adjustments for Arabic */
+body[dir="rtl"] {
+    direction: rtl;
+    text-align: right;
+}
+
+body[dir="rtl"] .header .container {
+    flex-direction: row-reverse; /* Reverses logo and nav order */
+}
+
+body[dir="rtl"] .about-content {
+    flex-direction: row-reverse; /* Reverses text and image order */
+}
+
+body[dir="rtl"] .text-about {
+    margin-left: auto;
+    margin-right: 45px; /* Adjust as needed */
+}
+
+body[dir="rtl"] .products h2 {
+    margin-left: auto;
+    margin-right: 70px; /* Adjust as needed */
+}
+
+body[dir="rtl"] .new-product-filters {
+    margin-left: auto;
+    margin-right: 71px; /* Adjust as needed */
+}
+
+body[dir="rtl"] .product-name,
+body[dir="rtl"] .product-price,
+body[dir="rtl"] .product-rating {
+    text-align: right;
+}
+
+body[dir="rtl"] .banner-content {
+    margin-left: auto; /* Pushes content to the right */
+    margin-right: 0;
+}
+
+body[dir="rtl"] .footer-content {
+    flex-direction: row-reverse; /* Reverses footer columns */
+}
+
+body[dir="rtl"] .footer-brand {
+    text-align: right;
+}
+
+body[dir="rtl"] .footer-links ul {
+    padding-right: 0; /* Remove default padding for lists */
+}
+
+body[dir="rtl"] .product-detail-info {
+    text-align: right;
+}
+
+body[dir="rtl"] .quantity-selector {
+    flex-direction: row-reverse; /* Reverses quantity label and input */
+    justify-content: flex-end; /* Aligns to the right */
+}
+
+body[dir="rtl"] .cart-header {
+    flex-direction: row-reverse; /* Reverses cart title and clear button */
+}
+
+body[dir="rtl"] .cart-item-controls {
+    flex-direction: row-reverse; /* Reverses quantity buttons and input */
+    justify-content: flex-end; /* Aligns to the right */
+}
+
+body[dir="rtl"] .cart-item-subtotal {
+    flex-direction: row-reverse; /* Reverses subtotal label and value */
+}
+
+body[dir="rtl"] .order-summary-card h2,
+body[dir="rtl"] .order-summary-card .summary-row {
+    text-align: right;
+}
+
+body[dir="rtl"] .checkout-form h3,
+body[dir="rtl"] .form-group label {
+    text-align: right;
+}
+
+body[dir="rtl"] .order-summary h3,
+body[dir="rtl"] .order-item {
+    text-align: right;
+}
+
+body[dir="rtl"] .summary-totals .summary-row {
+    flex-direction: row-reverse;
+}
+
+body[dir="rtl"] .continue-shopping-btn {
+    flex-direction: row-reverse;
+}
+
+/* Specific adjustments for form elements in RTL */
+body[dir="rtl"] .form-group input,
+body[dir="rtl"] .form-group textarea,
+body[dir="rtl"] .cityy select {
+    text-align: right;
+}
+
+body[dir="rtl"] .cityy select option {
+    text-align: right;
+}
+
+/* Ensure icons are not flipped if they are part of text flow */
+body[dir="rtl"] .fas {
+    transform: scaleX(1); /* Reset horizontal flip for Font Awesome icons if they are flipped by parent RTL */
+}
+
+
+
+body[dir="rtl"] .subtotal-container{
+  direction: ltr;
+  unicode-bidi: embed;
 }

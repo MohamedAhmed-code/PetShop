@@ -3,32 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pet Store - Best Food For Your Pet</title>
+    <title data-en="Pet Store - Best Food For Your Pet" data-ar="متجر الحيوانات الأليفة - أفضل طعام لحيوانك الأليف">Pet Store - Best Food For Your Pet</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="aos-master/dist/aos.css">
 </head>
-<body>
+<body dir="ltr">
  <header class="header page-header">
         <div class="container">
             <div class="logo" data-aos="fade-right">
                 <h2>Pet<span>Store</span></h2>
             </div>
 
-            <!-- زرار المينيو -->
-            <div class="menu-icon" id="menuIcon" onclick="myFunction()" data-aos="fade-left">☰</div>
-
-            <!-- القائمة -->
             <nav class="nav topnav" id="myTopnav" data-aos="zoom-in">
-                <a href="#home" class="active">Home</a>
-                <a href="#category">Category</a>
-                <a href="#about">About US</a>
-                <a href="#shop">Shop</a>
+                <a href="#home" class="active" data-en="Home" data-ar="الرئيسية">Home</a>
+                <a href="#category" data-en="Category" data-ar="الفئات">Category</a>
+                <a href="#about" data-en="About US" data-ar="من نحن">About US</a>
+                <a href="#shop" data-en="Shop" data-ar="المتجر">Shop</a>
                 <a href="cart.html" class="cart-link">
                     <img src="imgs/cart-icon.png" alt="">
                     <span class="cart-count" id="cartCount">0</span>
                 </a>
+
             </nav>
+                    <div class="language-switcher" data-aos="fade-left">
+                        <button class="lang-btn" data-lang="en">EN</button>
+                        <button class="lang-btn" data-lang="ar">AR</button>
+                    </div>
+            <div class="menu-icon" id="menuIcon" onclick="myFunction()" data-aos="fade-left">☰</div>
         </div>
     </header>
 
@@ -37,9 +39,11 @@
         <div class="container"  data-aos="zoom-in-right">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h1><span class="best-food"><span class="best">BEST</span> <span class="food">FOOD</span></span><br><span class="for-pet">FOR YOUR <span class="best">PET</span></span></h1>
-                    <p>Everything that your pet were wants with best quality and best price</p>
-                    <button class="btn-primary" style="color: #741a66;" onclick="scrollToSection('shop')" > Shop now</a></button>
+                    <h1><span class="best-food"><span class="best" data-en="BEST" data-ar="أفضل">BEST</span> <span class="food" data-en="FOOD" data-ar="طعام">FOOD</span></span>
+                    <br>
+                    <span class="for-pet" data-en="FOR YOUR <span class='best'>PET</span>" data-ar="لحيوانك <span class='best'>الأليف</span> ">FOR YOUR <span class="best">PET</span><span class="best" data-en="PET" data-ar="الأليف">PET</span></span></h1>
+                    <p data-en="Everything that your pet were wants with best quality and best price" data-ar="كل ما يريده حيوانك الأليف بأفضل جودة وأفضل سعر">Everything that your pet were wants with best quality and best price</p>
+                    <button class="btn-primary" style="color: #741a66;" onclick="scrollToSection('shop')" data-en="Shop now" data-ar="تسوق الآن"> Shop now</button>
                 </div>
             </div>
         </div>
@@ -49,37 +53,37 @@
     <section class="category" id="category">
         <div class="container">
             <div class="paw-icon" data-aos="fade-up" data-aos-anchor-placement="top-bottom"><img src="imgs/Pet(1).png" alt=""></div>
-            <h2 data-aos="fade-up" data-aos-anchor-placement="top-bottom">Category</h2>
+            <h2 data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-en="Category" data-ar="الفئات">Category</h2>
             <div class="category-grid">
                 <div class="category-item" onclick="filterProducts('dogs')" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
                     <div class="category-icon" onclick="scrollToSection('shop')">
                         <img style="border-radius: 50%;" src="imgs/Pet(7).png" alt="Dog">
                     </div>
-                    <span>DOGS</span>
+                    <span data-en="DOGS" data-ar="الكلاب">DOGS</span>
                 </div>
                 <div class="category-item" onclick="filterProducts('cats')" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
                     <div class="category-icon" onclick="scrollToSection('shop')">
                         <img src="imgs/1.webp" alt="Cat">
                     </div>
-                    <span>CATS</span>
+                    <span data-en="CATS" data-ar="القطط">CATS</span>
                 </div>
                 <div class="category-item" onclick="filterProducts('birds')" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
                     <div class="category-icon" onclick="scrollToSection('shop')">
                         <img src="imgs/3.webp" alt="Bird">
                     </div>
-                    <span>BIRDS</span>
+                    <span data-en="BIRDS" data-ar="الطيور">BIRDS</span>
                 </div>
                 <div class="category-item" onclick="filterProducts('fish')" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
                     <div class="category-icon" onclick="scrollToSection('shop')">
                         <img src="imgs/2.webp" alt="Fish">
                     </div>
-                    <span>FISH</span>
+                    <span data-en="FISH" data-ar="الأسماك">FISH</span>
                 </div>
-                <div class="category-item" onclick="filterProducts('rabbits')" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+                <div class="category-item" onclick="filterProducts('accessories')" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
                     <div class="category-icon" onclick="scrollToSection('shop')">
-                        <img src="imgs/5.webp" alt="Rabbit">
+                        <img src="imgs/accessories-4.webp" alt="Accessories" style="border-radius: 50%;">
                     </div>
-                    <span>RABBITS</span>
+                    <span data-en="ACCESSORIES" data-ar="الإكسسوارات">ACCESSORIES</span>
                 </div>
             </div>
         </div>
@@ -98,9 +102,9 @@
                         <img class="paw-rot" src="imgs/Pet(1).png" alt="">
                     </div>
                     <div class="text-about">
-                        <h2 data-aos="zoom-in-right"><span class="orange">ABOUT US</span><br>Pet Store</h2>
-                        <p data-aos="fade-right">Give your furry friend they're looking for by choosing the right food for your pet. This way, they'll immediately see your brand offering and they can one-click-listen.</p>
-                        <button data-aos="zoom-in-up" class="btn-primary1" onclick="scrollToSection('shop')">Shop Now</button>
+                        <h2 data-aos="zoom-in-right"><span class="orange" data-en="ABOUT US" data-ar="من نحن">ABOUT US</span><br data-en="Pet Store" data-ar="متجر الحيوانات الأليفة">Pet Store</h2>
+                        <p data-aos="fade-right" data-en="Give your furry friend they're looking for by choosing the right food for your pet. This way, they'll immediately see your brand offering and they can one-click-listen." data-ar="امنح صديقك الفروي ما يبحث عنه باختيار الطعام المناسب لحيوانك الأليف. بهذه الطريقة، سيرون عرض علامتك التجارية على الفور ويمكنهم الاستماع بنقرة واحدة.">Give your furry friend they're looking for by choosing the right food for your pet. This way, they'll immediately see your brand offering and they can one-click-listen.</p>
+                        <button data-aos="zoom-in-up" class="btn-primary1" onclick="scrollToSection('shop')" data-en="Shop Now" data-ar="تسوق الآن">Shop Now</button>
                     </div>
                 </div>
                 <div class="about-image">
@@ -114,15 +118,15 @@
     <section class="products" id="shop">
         <div class="container">
             <div class="paw-icon" data-aos="zoom-in-right"><img class="paw-rot" src="imgs/Pet(1).png" alt=""></div>
-            <h2><span class="purple" data-aos="zoom-in-right">OUR PRODUCT</span><br><span class="orange">THE SHOP</span></h2>
+            <h2><span class="purple" data-aos="zoom-in-right" data-en="OUR PRODUCT" data-ar="منتجاتنا">OUR PRODUCT</span><br><span class="orange" data-en="THE SHOP" data-ar="المتجر">THE SHOP</span></h2>
             
             <div class="new-product-filters" id="newProductFilters" data-aos="zoom-in-right">
-                <button class="new-filter-btn active" data-filter="all">ALL</button>
-                <button class="new-filter-btn" data-filter="cats">CATS</button>
-                <button class="new-filter-btn" data-filter="dogs">DOGS</button>
-                <button class="new-filter-btn" data-filter="birds">BIRDS</button>
-                <button class="new-filter-btn" data-filter="fish">FISH</button>
-                <button class="new-filter-btn" data-filter="rabbits">RABBITS</button>
+                <button class="new-filter-btn active" data-filter="all" data-en="ALL" data-ar="الكل">ALL</button>
+                <button class="new-filter-btn" data-filter="cats" data-en="CATS" data-ar="القطط">CATS</button>
+                <button class="new-filter-btn" data-filter="dogs" data-en="DOGS" data-ar="الكلاب">DOGS</button>
+                <button class="new-filter-btn" data-filter="birds" data-en="BIRDS" data-ar="الطيور">BIRDS</button>
+                <button class="new-filter-btn" data-filter="fish" data-en="FISH" data-ar="الأسماك">FISH</button>
+                <button class="new-filter-btn" data-filter="accessories" data-en="ACCESSORIES" data-ar="الإكسسوارات">ACCESSORIES</button>
             </div>
 
             <div class="new-products-grid" id="newProductsGrid">
@@ -135,16 +139,16 @@
     <section class="promo-banners">
         <div class="container">
             <div class="banners-grid">
-                <div class="banner banner-cat" data-aos="fade-right">
+                <div class="banner banner-cat" data-aos="fade-up">
                     <div class="banner-content bannercat">
-                        <h3><span>50%</span><br>ON CAT FOODS</h3>
-                        <button class="btn-secondary1" onclick="scrollToSection('shop')">SHOP NOW</button>
+                        <h3 data-en="<span>50%</span><br>ON CAT FOODS" data-ar="<span>50%</span><br>على أطعمة القطط"><span>50%</span><br>ON CAT FOODS</h3>
+                        <button class="btn-secondary1" onclick="scrollToSection('shop')" data-en="SHOP NOW" data-ar="تسوق الآن">SHOP NOW</button>
                     </div>
                 </div>
-                <div class="banner banner-dog" data-aos="fade-right">
+                <div class="banner banner-dog" data-aos="fade-up">
                     <div class="banner-content">
-                        <h3><span>50%</span><br>ON DOG FOODS</h3>
-                        <button class="btn-secondary1" onclick="scrollToSection('shop')">SHOP NOW</button>
+                        <h3 data-en="<span>50%</span><br>ON DOG FOODS" data-ar="<span>50%</span><br>على أطعمة الكلاب"><span>50%</span><br>ON DOG FOODS</h3>
+                        <button class="btn-secondary1" onclick="scrollToSection('shop')" data-en="SHOP NOW" data-ar="تسوق الآن">SHOP NOW</button>
                     </div>
                 </div>
             </div>
@@ -158,10 +162,10 @@
                 <div class="footer-brand">
                     <h3 data-aos="zoom-in-right">Pet<span>Store</span></h3>
                     <div class="footer-info">
-                        <p data-aos="zoom-in-right"><strong>MOHAMED AHMED</strong></p>
-                        <p data-aos="zoom-in-right">WEBSITE DESIGNER</p>
-                        <p data-aos="zoom-in-right">📞 <a href=""> +20 1271120594 </a></p>
-                        <div class="social-icons" data-aos="zoom-in-right">
+                        <p data-aos="zoom-in-right" data-en="<strong>MOHAMED AHMED</strong>" data-ar="<strong>محمد أحمد</strong>"><strong>MOHAMED AHMED</strong></p>
+                        <p data-aos="zoom-in-right" data-en="WEBSITE DESIGNER" data-ar="مصمم مواقع">WEBSITE DESIGNER</p>
+                        <p data-aos="zoom-in-right" data-en="<a href=''>📞 +20 1271120594 </a>" data-ar="<a href=''>📞 +20 1271120594 </a>">📞 +20 1271120594<a href=""> +20 1271120594 </a></p>
+                        <div class="social-icons">
                             <a href="#"><i class="fab fa-instagram"></i></a>
                             <a href="#"><i class="fab fa-facebook"></i></a>
                             <a href="#"><i class="fab fa-twitter"></i></a>
@@ -169,13 +173,13 @@
                     </div>
                 </div>
                 <div class="footer-links">
-                    <h3 data-aos="zoom-in-right">Our Sections</h3>
+                    <h3 data-aos="zoom-in-right" data-en="Our Sections" data-ar="أقسامنا">Our Sections</h3>
                     <ul data-aos="zoom-in-right">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#category">Our Category</a></li>
-                        <li><a href="#about">About US</a></li>
-                        <li><a href="#shop">Our Shop</a></li>
-                        <li><a href="cart.html">Shopping Cart</a></li>
+                        <li><a href="#home" data-en="Home" data-ar="الرئيسية">Home</a></li>
+                        <li><a href="#category" data-en="Our Category" data-ar="فئاتنا">Our Category</a></li>
+                        <li><a href="#about" data-en="About US" data-ar="من نحن">About US</a></li>
+                        <li><a href="#shop" data-en="Our Shop" data-ar="متجرنا">Our Shop</a></li>
+                        <li><a href="cart.html" data-en="Shopping Cart" data-ar="عربة التسوق">Shopping Cart</a></li>
                     </ul>
                 </div>
             </div>
