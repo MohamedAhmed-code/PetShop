@@ -951,7 +951,7 @@ const products = [
     category: "cats",
     price: 24.99,
     oldPrice: 34.99,
-    image: "imgs/pet9.png",
+    image: "imgs/Pet9.png",
     rating: 4,
     description: "Nutritious cat food formula designed for adult cats with sensitive stomachs.",
     description_ar: "تركيبة طعام قطط مغذية مصممة للقطط البالغة ذات المعدة الحساسة."
@@ -963,7 +963,7 @@ const products = [
     category: "birds",
     price: 19.99,
     oldPrice: 29.99,
-    image: "imgs/pet10.png",
+    image: "imgs/Pet10.png",
     rating: 5,
     description: "Nutritious bird seed mix with sunflower seeds, millet, and essential vitamins.",
     description_ar: "خليط بذور طيور مغذي مع بذور عباد الشمس والدخن والفيتامينات الأساسية."
@@ -999,7 +999,7 @@ const products = [
     category: "dogs",
     price: 16.99,
     oldPrice: 21.99,
-    image: "imgs/pet9.png",
+    image: "imgs/Pet9.png",
     rating: 4,
     description: "Durable and stylish leash and collar set for daily walks.",
     description_ar: "طوق ومقود متين وأنيق للمشي اليومي."
@@ -1011,7 +1011,7 @@ const products = [
     category: "cats",
     price: 28.99,
     oldPrice: 35.99,
-    image: "imgs/pet10.png",
+    image: "imgs/Pet10.png",
     rating: 5,
     description: "Sturdy scratching post to keep your cat entertained and protect furniture.",
     description_ar: "عمود خدش قوي لإبقاء قطتك مستمتعة وحماية الأثاث."
